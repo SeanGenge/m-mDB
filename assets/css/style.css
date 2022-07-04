@@ -1,0 +1,15 @@
+.mySwiper {
+    padding: 40px;
+    background-color: red;
+}
+
+.swiper-slide {
+    background-color: rebeccapurple;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.movie-name {
+    text-align: center;
+}
+
