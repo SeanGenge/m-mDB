@@ -36,8 +36,13 @@ const fetchPopularMovies = function() {
             swiperWrapper.insertAdjacentHTML('beforeend', 
             `<!-- slide ${i+1} -->
             <div class="swiper-slide" id=${i}>
+
+                <img class="star" src="./assets/images/star.jpg"/>
+
                 <p class="movie-name">${element.original_title}</p>
-                <img/>
+
+                <img class="poster" src="https://image.tmdb.org/t/p/w500${element.poster_path}"/>
+                
             </div>`
             )
 

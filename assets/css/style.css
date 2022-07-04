@@ -1,15 +1,43 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .mySwiper {
     padding: 40px;
-    background-color: red;
+    background-color: rgb(55, 53, 53);
 }
 
 .swiper-slide {
-    background-color: rebeccapurple;
-    height: 300px;
+    background-color: gray;
+    /* height: 300px; */
     border-radius: 10px;
 }
 
 .movie-name {
     text-align: center;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    height: 60px;
+    background-color: aquamarine;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.star {
+    position: absolute;
+    height: 30px;
+    right: 10px;
+    bottom: 10px;
+}
+
+.poster {
+    display: block;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
