@@ -37,7 +37,7 @@ const fetchPopularMovies = function() {
             `<!-- slide ${i+1} -->
             <div class="swiper-slide" id=${i}>
 
-                <img class="star" src="./assets/images/star.jpg"/>
+                <img class="star" src="./assets/images/star.png"/>
 
                 <p class="movie-name">${element.original_title}</p>
 
