@@ -1,20 +1,46 @@
-* {
+
+body {
+    font-family: var(--primary-font);
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Acme', sans-serif;
 }
 
-:root {
-    --primary-colour: #007EA7;
-    --secondary-colour: #00A8E8;
-    --tertiary-colour: #003459;
-    --black: black;
-    --white: white;
-    --swiper-theme-color: white; 
+#title {
+    margin-left: 15px;
+}
+
+#search-form {
+    margin-left: 200px;
+    width: 500px;
+}
+
+#navigation {
+    background-color: var(--primary-colour);
+}
+
+.custom-btn,
+.custom-btn:hover {
+    background-color: var(--secondary-colour);
+}
+
+#search:focus {
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+    #search-form {
+        margin-left: 0;
+        width: 400px;
+    }
 }
 
 
+
+
+
+
+/* Ishan - CSS FOR MOVIE CAROUSEL ON HOME PAGE */
 #popular-now {
     text-align: center;
     margin: 20px;
@@ -36,7 +62,6 @@
     transition: 250ms all;
     transform: scale(1.05);
 }
-
 
 .movie-name {
     color: var(--white);
@@ -60,8 +85,6 @@
     top: 5px;
 }
 
-
-
 .poster {
     display: block;
     max-width: 100%;
@@ -80,14 +103,3 @@
     left: 5px;
     border-radius: 50%;
 }
-
-
-
-
-/* make carousel responsive */
-/* @media only screen and (max-width:1350px) {
-    .movie-name {
-        font-size: 0.8rem;
-        height: 90px;
-    }
-} */
