@@ -11,18 +11,18 @@
 
 .swiper-slide {
     background-color: gray;
-    /* height: 300px; */
     border-radius: 10px;
+    position: relative;
 }
 
 .movie-name {
     text-align: center;
+    font-weight: bold;
     padding-top: 10px;
     padding-bottom: 5px;
     margin-left: 45px;
     margin-right: 45px;
     height: 60px;
-    /* background-color: aquamarine; */
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -34,6 +34,10 @@
     top: 5px;
 }
 
+.fav {
+    background-color: yellow;
+}
+
 .poster {
     display: block;
     max-width: 100%;
@@ -41,5 +45,15 @@
     margin-right: auto;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.rating-circle {
+    padding: 10px;
+    background-color: green;
+    display: inline-block;
+    position: absolute;
+    top: 40px;
+    left: 5px;
+    border-radius: 50%;
 }
 
