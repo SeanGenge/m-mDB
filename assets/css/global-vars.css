@@ -5,4 +5,7 @@
     --black: black;
     --white: white;
     --primary-font: 'Acme', sans-serif;
+
+    /* this is how you change colour of the arrows on carousel */
+    --swiper-theme-color: white; 
 }

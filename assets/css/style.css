@@ -1,5 +1,9 @@
+
 body {
     font-family: var(--primary-font);
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 #title {
@@ -29,4 +33,73 @@ body {
         margin-left: 0;
         width: 400px;
     }
+}
+
+
+
+
+
+
+/* Ishan - CSS FOR MOVIE CAROUSEL ON HOME PAGE */
+#popular-now {
+    text-align: center;
+    margin: 20px;
+    font-size: 2.5rem;
+}
+
+.mySwiper {
+    padding: 40px;
+    background-color: var(--tertiary-colour);
+}
+
+.swiper-slide {
+    background-color: var(--black);
+    border-radius: 20px;
+    position: relative;
+}
+
+.swiper-slide:hover {
+    transition: 250ms all;
+    transform: scale(1.05);
+}
+
+.movie-name {
+    color: var(--white);
+    text-align: center;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-left: 45px;
+    margin-right: 45px;
+    height: 60px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.star {
+    position: absolute;
+    height: 30px;
+    right: 5px;
+    top: 5px;
+}
+
+.poster {
+    display: block;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.rating-circle {
+    padding: 10px;
+    background-color: rgb(33, 181, 33);
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    border-radius: 50%;
 }
