@@ -1,0 +1,32 @@
+body {
+    font-family: var(--primary-font);
+}
+
+#title {
+    margin-left: 15px;
+}
+
+#search-form {
+    margin-left: 200px;
+    width: 500px;
+}
+
+#navigation {
+    background-color: var(--primary-colour);
+}
+
+.custom-btn,
+.custom-btn:hover {
+    background-color: var(--secondary-colour);
+}
+
+#search:focus {
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+    #search-form {
+        margin-left: 0;
+        width: 400px;
+    }
+}

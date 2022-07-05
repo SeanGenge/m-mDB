@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Silver Screen DB</title>
-        <link rel="stylesheet" src="./assets/css/style.css" />
-    </head>
-    <body>
-        
-        <script href="./assets/js/script.js"></script>
-    </body>
+  <head>
+    <title>m&m DB</title>
+    <!-- MaterialCSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <!-- Our custom css -->
+    <link rel="stylesheet" href="./assets/css/global-vars.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <div class="navbar-fixed">
+      <nav id="navigation">
+        <div class="nav-wrapper">
+          <a href="./index.html" id="title" class="brand-logo">m&m DB</a>
+          <ul class="right">
+            <li><a id="favourites" class="waves-effect waves-light btn custom-btn">Favourites</a></li>
+            <!-- Sidebar (Hamburger Icon) -->
+            <li><a href="#" data-target="side-navbar" class="sidenav-trigger show-on-large right"><i class="material-icons">menu</i></a></li>
+          </ul>
+          <!-- Search -->
+          <form id="search-form">
+            <div class="input-field">
+              <input id="search" type="search">
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </div>
+      </nav>
+    </div>
+    
+    <!-- Material CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Our custom Scripts -->
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
