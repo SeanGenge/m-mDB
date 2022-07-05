@@ -93,30 +93,20 @@ const fetchPopularMovies = function() {
                 if(element.classList.contains('fav')) {
 
                     window.localStorage.setItem(`${currentCard.dataset.objectid}`, `https://api.themoviedb.org/3/movie/${currentCard.dataset.objectid}?api_key=c8cf92bd2fc318d87a9c7a2c7e328161`)
+
+                    element.src = "./assets/images/star-filled.png"
                 
                 } else {
                     window.localStorage.removeItem(`${currentCard.dataset.objectid}`)
+
+                    element.src = "./assets/images/star.png"
                 }
                     
+
 
             })
 
         })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -128,17 +118,61 @@ const fetchPopularMovies = function() {
 fetchPopularMovies();
 
 
+
+
+
+
+
 // slider options
 let swiper = new Swiper(".mySwiper", {
-    slidesPerView: 5, // how many images can you see in the viewport at once in the carousel
+
+    // these are the DEFAULT settings
+    slidesPerView: 1, // how many images can you see in the viewport at once in the carousel
     spaceBetween: 20, // in pixels
-    slidesPerGroup: 5,
+    slidesPerGroup: 1, // one click of the arrow buttons will move the slides by 5 positions
+
+    breakpoints: {
+        // when window width is >= 320px
+        1360: {
+         slidesPerView: 5,
+         slidesPerGroup: 5,
+         spaceBetween: 20
+        },
+        // when window width is >= 480px
+        1110: {
+         slidesPerView: 4,
+         slidesPerGroup: 4,
+         spaceBetween: 20
+        },
+        // when window width is >= 640px
+        850: {
+         slidesPerView: 3,
+         slidesPerGroup: 3,
+         spaceBetween: 20
+        },
+        // when window width is >= 640px
+        600: {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            spaceBetween: 20
+        },
+        // when window width is >= 640px
+        10: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 20
+        },
+    },
 
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
 });
+
+
+
+
 
 
 

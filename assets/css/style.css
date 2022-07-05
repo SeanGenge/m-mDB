@@ -2,29 +2,55 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Acme', sans-serif;
+}
+
+:root {
+    --primary-colour: #007EA7;
+    --secondary-colour: #00A8E8;
+    --tertiary-colour: #003459;
+    --black: black;
+    --white: white;
+    --swiper-theme-color: white; 
+}
+
+
+#popular-now {
+    text-align: center;
+    margin: 20px;
+    font-size: 2.5rem;
 }
 
 .mySwiper {
     padding: 40px;
-    background-color: rgb(55, 53, 53);
+    background-color: var(--tertiary-colour);
 }
 
 .swiper-slide {
-    background-color: gray;
-    border-radius: 10px;
+    background-color: var(--black);
+    border-radius: 20px;
     position: relative;
 }
 
+.swiper-slide:hover {
+    transition: 250ms all;
+    transform: scale(1.05);
+}
+
+
 .movie-name {
+    color: var(--white);
     text-align: center;
     font-weight: bold;
     padding-top: 10px;
     padding-bottom: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
     margin-left: 45px;
     margin-right: 45px;
     height: 60px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .star {
@@ -34,26 +60,34 @@
     top: 5px;
 }
 
-.fav {
-    background-color: yellow;
-}
+
 
 .poster {
     display: block;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .rating-circle {
     padding: 10px;
-    background-color: green;
+    background-color: rgb(33, 181, 33);
     display: inline-block;
     position: absolute;
-    top: 40px;
+    top: 5px;
     left: 5px;
     border-radius: 50%;
 }
 
+
+
+
+/* make carousel responsive */
+/* @media only screen and (max-width:1350px) {
+    .movie-name {
+        font-size: 0.8rem;
+        height: 90px;
+    }
+} */
