@@ -77,7 +77,7 @@ body {
     border-top-right-radius: 20px;
 }
 
-.star {
+.star, .star-song {
     position: absolute;
     height: 30px;
     right: 5px;
