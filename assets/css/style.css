@@ -10,35 +10,30 @@ body {
     margin-left: 15px;
 }
 
-#search-form {
-    margin-left: 200px;
-    width: 500px;
+#searched-movies {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: center;
+    margin: 20px auto;
 }
 
-#navigation {
-    background-color: var(--primary-colour);
+.movie-card {
+    position: relative;
+    width: 300px;
+    margin: 10px;
+    background: black;
+    border-radius: 20px;
+    transition: all .1s ease-in-out;
 }
 
-.custom-btn,
-.custom-btn:hover {
-    background-color: var(--secondary-colour);
+.movie-card:hover {
+    transform: scale(1.05); 
 }
 
-#search:focus {
-    border-radius: 5px;
+.mc {
+    position: relative;
 }
-
-@media screen and (max-width: 1000px) {
-    #search-form {
-        margin-left: 0;
-        width: 400px;
-    }
-}
-
-
-
-
-
 
 /* Ishan - CSS FOR MOVIE CAROUSEL ON HOME PAGE */
 #popular-now {
