@@ -4,8 +4,10 @@ body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    background-color: var(--tertiary-colour);
 }
 
+/* navigation bar */
 #title {
     margin-left: 15px;
 }
@@ -35,11 +37,15 @@ body {
     position: relative;
 }
 
-/* Ishan - CSS FOR MOVIE CAROUSEL ON HOME PAGE */
-#popular-now {
+
+
+/* CSS FOR MOVIE CAROUSEL AND SONG CAROUSEL ON HOME PAGE */
+#movies-popular-now, #songs-most-popular {
     text-align: center;
     margin: 20px;
+    margin-top: 60px;
     font-size: 2.5rem;
+    color: var(--white);
 }
 
 .mySwiper {
@@ -48,7 +54,7 @@ body {
 }
 
 .swiper-slide {
-    background-color: var(--black);
+    background-color: var(--primary-colour);
     border-radius: 20px;
     position: relative;
 }
@@ -58,12 +64,10 @@ body {
     transform: scale(1.05);
 }
 
-.movie-name {
+.movie-name, .song-name {
     color: var(--white);
     text-align: center;
     font-weight: bold;
-    padding-top: 10px;
-    padding-bottom: 5px;
     padding-left: 2px;
     padding-right: 2px;
     margin-left: 45px;
@@ -73,7 +77,7 @@ body {
     border-top-right-radius: 20px;
 }
 
-.star {
+.star, .star-song {
     position: absolute;
     height: 30px;
     right: 5px;
@@ -97,4 +101,15 @@ body {
     top: 5px;
     left: 5px;
     border-radius: 50%;
+    margin: 0;
 }
+
+.mySwiper2 {
+    padding: 40px;
+    background-color: var(--tertiary-colour);
+}
+
+
+
+
+

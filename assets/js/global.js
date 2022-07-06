@@ -44,15 +44,14 @@ function addFavOnLoad() {
     }
 
     let localStorageVariables = {...localStorage};
-    console.log(localStorageVariables);
 
     let arrayOfLocalStorageKeys = Object.keys(localStorageVariables);
     console.log(arrayOfLocalStorageKeys);
-    allCards.forEach(function(element) {
+    allCards.forEach(function(card) {
 
-        if(arrayOfLocalStorageKeys.includes(element.dataset.objectid)) {
-            element.children[0].classList.add('fav');
-            element.children[0].src = "./assets/images/star-filled.png";
+        if(arrayOfLocalStorageKeys.includes(card.dataset.objectid)) {
+            card.children[0].classList.add('fav');
+            card.children[0].src = "./assets/images/star-filled.png";
         }
     })
 }
