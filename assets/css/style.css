@@ -53,10 +53,10 @@ body {
 }
 
 .swiper-slide {
-    background-color: var(--black);
+    background-color: var(--primary-colour);
     border-radius: 20px;
     position: relative;
-    border: 5px solid var(--black);
+    border: 5px solid var(--primary-colour);
 }
 
 .swiper-slide:hover {

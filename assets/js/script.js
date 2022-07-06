@@ -50,25 +50,25 @@ let movieSwiper = new Swiper(".mySwiper", {
         // when window width is >= 1360px
         1360: {
          slidesPerView: 5,
-         slidesPerGroup: 5,
+         slidesPerGroup: 1,
          spaceBetween: 20
         },
         // when window width is >= 1100px
         1110: {
          slidesPerView: 4,
-         slidesPerGroup: 4,
+         slidesPerGroup: 1,
          spaceBetween: 20
         },
         // when window width is >= 850px
         850: {
          slidesPerView: 3,
-         slidesPerGroup: 3,
+         slidesPerGroup: 1,
          spaceBetween: 20
         },
         // when window width is >= 600px
         600: {
             slidesPerView: 2,
-            slidesPerGroup: 2,
+            slidesPerGroup: 1,
             spaceBetween: 20
         },
         // when window width is >= 10px
@@ -96,9 +96,10 @@ let movieSwiper = new Swiper(".mySwiper", {
 
 let popularAlbumsArray20 = [];
 let starSongElements;
+let allAlbumCards;
 
 
-// fetching song data from audioDB
+// fetching album data from audioDB
 fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
 .then(responce => responce.json())
 .then(data => {
@@ -116,7 +117,7 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
     popularAlbumsArray20.forEach(function(object, i) {
 
             swiperWrapperSongs.insertAdjacentHTML('beforeend', 
-                `<div class="swiper-slide" data-objectid="${object.idAlbum}">
+                `<div class="swiper-slide swiper-slide-album" data-artist="${object.strArtist}" data-album="${object.strAlbum}">
                     <img class="star-song" src="./assets/images/star.png"/>
                     <p class="song-name">${object.strAlbum}</p>
                     <img class="poster" src="${object.strAlbumThumb}"/>
@@ -131,7 +132,82 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
 
 
 
+    // add the 'fav' class to all the cards that have their id stored in local storage
+    allAlbumCards = document.querySelectorAll('.swiper-slide-album');
+
+    let allLocalStorageVariables = {...localStorage};
+
+    // filter out the movie variables and create object with only album variables
+    let arrayOfLocalStorageValues = Object.keys(allLocalStorageVariables);
     
+    let localStorageAlbumsOnly = [];
+
+    arrayOfLocalStorageValues.forEach(function(key) {
+
+        if(key.includes('9album9')) {
+            localStorageAlbumsOnly.push(key)
+        }
+
+    })
+
+
+    let artistNameString;
+    let albumNameString;
+
+
+    localStorageAlbumsOnly.forEach(function(string) {
+
+
+        artistNameString = string.split('-')[1];
+        albumNameString = string.split('-')[2];
+
+        allAlbumCards.forEach(function(card) {
+
+            let noSpacesArtist = card.dataset.artist;
+            let noSpacesAlbum = card.dataset.album;
+
+
+            if(noSpacesArtist.includes(' ')) {
+                noSpacesArtist = noSpacesArtist.replaceAll(' ', '_');
+            }
+
+            
+
+            if(noSpacesAlbum.includes(' ')) {
+                noSpacesAlbum = noSpacesAlbum.replaceAll(' ', '_');
+            }
+
+           
+
+            if((noSpacesArtist === artistNameString) && (noSpacesAlbum === albumNameString)) {
+                card.children[0].classList.add('fav-song')
+                card.children[0].src = "./assets/images/star-filled.png";
+            }
+        })
+
+
+
+
+
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // add event listener to all star elements for SONGS
     starSongElements = document.querySelectorAll('.star-song');
     
@@ -143,15 +219,33 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
 
             let currentSongCard = element.closest('.swiper-slide');
 
+            let artistName = currentSongCard.dataset.artist;
+            let albumName = currentSongCard.dataset.album;
+
+
+
+            // manipulating artist and album string
+            if(artistName.includes(' ')) {
+                artistName = artistName.replaceAll(' ', '_');
+            }
+
+            if(albumName.includes(' ')) {
+                albumName = albumName.replaceAll(' ', '_');
+            }
+
             if(element.classList.contains('fav-song')) {
-                // window.localStorage.setItem(`song-${currentSongCard}`)
+                window.localStorage.setItem(`9album9-${artistName}-${albumName}`, `https://www.theaudiodb.com/api/v1/json/523532/searchalbum.php?s=${artistName}&a=${albumName}`)
+                element.src = "./assets/images/star-filled.png";
+            } else {
+                window.localStorage.removeItem(`9album9-${artistName}-${albumName}`)
+                element.src = "./assets/images/star.png";
             }
 
         })
 
     })
 
-
+    
 
 
 })
@@ -200,25 +294,25 @@ let songSwiper = new Swiper(".mySwiper2", {
         // when window width is >= 1360px
         1360: {
          slidesPerView: 5,
-         slidesPerGroup: 5,
+         slidesPerGroup: 1,
          spaceBetween: 20
         },
         // when window width is >= 1100px
         1110: {
          slidesPerView: 4,
-         slidesPerGroup: 4,
+         slidesPerGroup: 1,
          spaceBetween: 20
         },
         // when window width is >= 850px
         850: {
          slidesPerView: 3,
-         slidesPerGroup: 3,
+         slidesPerGroup: 1,
          spaceBetween: 20
         },
         // when window width is >= 600px
         600: {
             slidesPerView: 2,
-            slidesPerGroup: 2,
+            slidesPerGroup: 1,
             spaceBetween: 20
         },
         // when window width is >= 10px
