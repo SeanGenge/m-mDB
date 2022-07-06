@@ -1,4 +1,5 @@
 const apiKey = "128647a13ca5ba337586e1fc48e4cbf6";
+const musicApiKey = "523532";
 
 function getMovieCardHTML(movieDetails, index, inCarousel) {
     return `
@@ -7,6 +8,15 @@ function getMovieCardHTML(movieDetails, index, inCarousel) {
             <p class="movie-name">${movieDetails.original_title}</p>
             <img class="poster" src="https://image.tmdb.org/t/p/w500${movieDetails.poster_path}"/>
             <p class="rating-circle">${movieDetails.vote_average.toFixed(1)}</p>
+        </div>`
+}
+
+function getMusicCardHTML(musicDetails, index) {
+    return `
+        <div id=${index} data-objectid="${musicDetails.idAlbum}">
+            <img class="star" src="./assets/images/star.png"/>
+            <p class="movie-name">${musicDetails.strAlbumStripped}</p>
+            <img class="poster" src="${musicDetails.strAlbumThumb}"/>
         </div>`
 }
 
@@ -55,4 +65,26 @@ function addFavOnLoad() {
             element.children[0].src = "./assets/images/star-filled.png";
         }
     })
+}
+
+function readQueryString() {
+    // Returns the params from the query string
+    var queryString = document.location.search.substring(1);
+    var vars = queryString.split('&');
+    var params = [];
+    
+    for (var i = 0; i < vars.length; i++) {
+        var param = vars[i].split('=');
+        
+        if (param[0] === "search") {
+            param[1] = param[1];
+        }
+        else if (param[0] === "term") {
+            param[1] = param[1].replaceAll("%20", " ");
+        }
+        
+        params.push(param);
+    }
+    
+    return params;
 }

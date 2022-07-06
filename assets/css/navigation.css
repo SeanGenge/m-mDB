@@ -17,7 +17,7 @@
     color: var(--tertiary-colour) !important;
   }
   
-#search-bar {
+#search-form {
     margin-left: 200px;
     width: 500px;
 }
@@ -31,7 +31,7 @@
 }
 
 @media screen and (max-width: 1000px) {
-    #search-bar {
+    #search-form {
         margin-left: 0;
         width: 400px;
     }

@@ -6,7 +6,7 @@ function search(event) {
     // Only search if the enter key is pressed
     if (event.key === "Enter") {
         // Go to the search page and add the search criteria in the query string
-        window.location.href = searchURL + "?search=" + event.target.value;
+        window.location.href = searchURL + "?search=" + event.target.value + "&term=" + searchedTerm;
     }
 }
 
@@ -17,26 +17,37 @@ function searchMovie(movie, page) {
         return response.json();
     })
     .then(function(data) {
-        console.log(data);
-        displaySearchedMovies(data);
+        if (data !== null) {
+            displaySearchedMovies(data);
+        }
+    });
+}
+
+function searchMusic(music) {
+    // Searches a particular music album using audioDB
+    fetch("https://theaudiodb.com/api/v1/json/" + musicApiKey + "/searchalbum.php?s=" + music)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        if (data !== null) {
+            displaySearchedMusic(data);
+        }
     });
 }
 
 function displaySearchedMovies(movies) {
     // Displays the list of movies that were searched
-    var movieGridList = document.getElementById("searched-movies");
-    var numPerRow = 4;
+    var movieGridList = document.getElementById("search-results");
     // Remove all movies if they don't have a poster
     var moviesList = movies.results.filter(movie => movie.poster_path !== null);
-    var totalRows = Math.ceil(moviesList.length / numPerRow);
     
     for (var i = 0; i < moviesList.length; i++) {
         var currMovie = moviesList[i];
         
         // Since the movieCard is in HTML, make a wrapper div that will help resize the movies
         var movieCardWrapper = document.createElement("div");
-        // Calculate the size of the movie card based on the number you want on each row
-        movieCardWrapper.className = "movie-card";
+        movieCardWrapper.className = "search-card";
         
         var movieCard = getMovieCardHTML(currMovie, i, false);
         
@@ -49,13 +60,44 @@ function displaySearchedMovies(movies) {
     addStarEventListeners();
 }
 
+function displaySearchedMusic(music) {
+    // Displays the list of music that were searched based on the artist
+    var musicGridList = document.getElementById("search-results");
+    
+    // Remove all music if they don't have an album image
+    var musicList = music['album'].filter(m => m.strAlbumThumb !== null);
+    
+    for (var i = 0; i < musicList.length; i++) {
+        var currMusic = musicList[i];
+        
+        // Since the musicCard is in HTML, make a wrapper div that will help resize the music cards
+        var musicCardWrapper = document.createElement("div");
+        musicCardWrapper.className = "search-card";
+        
+        var musicCard = getMusicCardHTML(currMusic, i, false);
+        
+        musicCardWrapper.innerHTML += musicCard;
+        
+        musicGridList.appendChild(musicCardWrapper);
+    }
+    
+    addFavOnLoad();
+    addStarEventListeners();
+}
+
 searchBar.addEventListener("keyup", search);
 
 // Only run the search if on the search page
 if (window.location.pathname.includes(searchURL)) {
-    // Get the name of the searched movie from the query string
-    var queryString = document.location.search;
-    var movieName = queryString.split('=')[1];
+    var params = readQueryString();
+    var searchStr = params[0];
+    var searchBy = params[1];
     
-    searchMovie(movieName, 1);
+    // If it was a movie, search by movie. If not search by music artists
+    if (searchBy[1] === movieSearchTxt) {
+        searchMovie(searchStr[1], 1);
+    }
+    else if (searchBy[1] === musicSearchTxt) {
+        searchMusic(searchStr[1]);
+    }
 }

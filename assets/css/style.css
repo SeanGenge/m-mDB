@@ -10,15 +10,14 @@ body {
     margin-left: 15px;
 }
 
-#searched-movies {
+#search-results {
     display: flex;
     flex-wrap: wrap;
     width: 90%;
-    justify-content: center;
     margin: 20px auto;
 }
 
-.movie-card {
+.search-card {
     position: relative;
     width: 300px;
     margin: 10px;
@@ -27,7 +26,7 @@ body {
     transition: all .1s ease-in-out;
 }
 
-.movie-card:hover {
+.search-card:hover {
     transform: scale(1.05); 
 }
 
