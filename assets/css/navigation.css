@@ -1,0 +1,38 @@
+/* label color */
+.input-field label {
+    color: var(--white-colour) !important;
+  }
+  /* label focus color */
+  .input-field input[type=text]:focus + label {
+    color: var(--tertiary-colour) !important;
+  }
+  /* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid var(--tertiary-colour) !important;
+    box-shadow: 0 1px 0 0 var(--tertiary-colour) !important;
+  }
+  
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: var(--tertiary-colour) !important;
+  }
+  
+#search-bar {
+    margin-left: 200px;
+    width: 500px;
+}
+
+#navigation {
+    background-color: var(--primary-colour);
+}
+
+#search:focus {
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+    #search-bar {
+        margin-left: 0;
+        width: 400px;
+    }
+}
