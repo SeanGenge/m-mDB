@@ -13,10 +13,12 @@ body {
 }
 
 #search-results {
-    display: flex;
-    flex-wrap: wrap;
-    width: 90%;
+    display: grid;
+    width: 95%;
     margin: 20px auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
+    grid-gap: 16px;
+    justify-content: center;
 }
 
 .search-card {
