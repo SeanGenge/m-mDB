@@ -114,7 +114,7 @@ if(trailerList[i].type == "Trailer"){
 var div=document.getElementById('canvas');
 div.onclick = function(e){
    var x=e.target.id
-   var n=x.charAt(4)-1
+   var n=x.replace(/\D/g,'')-1
   
   $("#movie-modal").show()
   $("#modalImg").attr("src",`https://image.tmdb.org/t/p/w300${movieList.results[n].poster_path}`)
