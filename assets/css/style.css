@@ -12,24 +12,23 @@ body {
     margin-left: 15px;
 }
 
-#searched-movies {
+#search-results {
     display: flex;
     flex-wrap: wrap;
     width: 90%;
-    justify-content: center;
     margin: 20px auto;
 }
 
-.movie-card {
+.search-card {
     position: relative;
     width: 300px;
     margin: 10px;
-    background: black;
+    background: var(--primary-colour);
     border-radius: 20px;
     transition: all .1s ease-in-out;
 }
 
-.movie-card:hover {
+.search-card:hover {
     transform: scale(1.05); 
 }
 
@@ -37,7 +36,12 @@ body {
     position: relative;
 }
 
-
+#search-title {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 54px;
+    color: var(--white);
+}
 
 /* CSS FOR MOVIE CAROUSEL AND SONG CAROUSEL ON HOME PAGE */
 #movies-popular-now, #songs-most-popular {
