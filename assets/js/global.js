@@ -7,7 +7,7 @@ function getMovieCardHTML(movieDetails, index, inCarousel) {
             <img class="star" src="./assets/images/star.png"/>
             <p class="movie-name">${movieDetails.original_title}</p>
             <img class="poster" src="https://image.tmdb.org/t/p/w500${movieDetails.poster_path}"/>
-            <p class="rating-circle">${movieDetails.vote_average.toFixed(1)}</p>
+            <p class="rating-circle ${movieDetails.vote_average.toFixed(1) >= 7.5 ? "green" : movieDetails.vote_average.toFixed(1) >= 5 ? "orange" : "red"}">${movieDetails.vote_average.toFixed(1)}</p>
         </div>`
 }
 
@@ -17,7 +17,7 @@ function getMusicCardHTML(musicDetails, index) {
             <img class="star" src="./assets/images/star.png"/>
             <p class="movie-name">${musicDetails.strAlbumStripped}</p>
             <img class="poster" src="${musicDetails.strAlbumThumb}"/>
-            <p class="rating-circle">${Number(musicDetails.intScore).toFixed(1)}</p>
+            <p class="rating-circle ${Number(musicDetails.intScore).toFixed(1) >= 7.5 ? "green" : Number(musicDetails.intScore).toFixed(1) >= 5 ? "orange" : "red"}">${Number(musicDetails.intScore).toFixed(1)}</p>
         </div>`
 }
 
@@ -164,4 +164,9 @@ function readQueryString() {
     }
     
     return params;
+}
+
+function changeRatingColour(card) {
+    // Changes the rating colour on the cards
+    
 }

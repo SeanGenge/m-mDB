@@ -28,14 +28,14 @@ body {
     background: var(--primary-colour);
     border-radius: 20px;
     transition: all .1s ease-in-out;
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    overflow: hidden;
 }
 
 .search-card:hover {
     transform: scale(1.05); 
-}
-
-.mc {
-    position: relative;
 }
 
 #search-title {
@@ -97,17 +97,19 @@ body {
     margin-right: auto;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 .rating-circle {
     padding: 10px;
-    background-color: rgb(33, 181, 33);
     display: inline-block;
     position: absolute;
     top: 5px;
     left: 5px;
     border-radius: 50%;
     margin: 0;
+    font-weight: bolder;
 }
 
 .mySwiper2 {
