@@ -1,0 +1,115 @@
+
+body {
+    font-family: var(--primary-font);
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: var(--tertiary-colour);
+}
+
+/* navigation bar */
+#title {
+    margin-left: 15px;
+}
+
+#searched-movies {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.movie-card {
+    position: relative;
+    width: 300px;
+    margin: 10px;
+    background: black;
+    border-radius: 20px;
+    transition: all .1s ease-in-out;
+}
+
+.movie-card:hover {
+    transform: scale(1.05); 
+}
+
+.mc {
+    position: relative;
+}
+
+
+
+/* CSS FOR MOVIE CAROUSEL AND SONG CAROUSEL ON HOME PAGE */
+#movies-popular-now, #songs-most-popular {
+    text-align: center;
+    margin: 20px;
+    margin-top: 60px;
+    font-size: 2.5rem;
+    color: var(--white);
+}
+
+.mySwiper {
+    padding: 40px;
+    background-color: var(--tertiary-colour);
+}
+
+.swiper-slide {
+    background-color: var(--primary-colour);
+    border-radius: 20px;
+    position: relative;
+}
+
+.swiper-slide:hover {
+    transition: 250ms all;
+    transform: scale(1.05);
+}
+
+.movie-name, .song-name {
+    color: var(--white);
+    text-align: center;
+    font-weight: bold;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-left: 45px;
+    margin-right: 45px;
+    height: 60px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.star, .star-song {
+    position: absolute;
+    height: 30px;
+    right: 5px;
+    top: 5px;
+}
+
+.poster {
+    display: block;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.rating-circle {
+    padding: 10px;
+    background-color: rgb(33, 181, 33);
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    border-radius: 50%;
+    margin: 0;
+}
+
+.mySwiper2 {
+    padding: 40px;
+    background-color: var(--tertiary-colour);
+}
+
+
+
+
+
