@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
+   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+   <link rel="stylesheet" href="sidebar.css">
+   <title>Document</title>
+</head>
+
+<body>
+
+<!-- side bar start -->
+   <aside class="w-64" aria-label="Sidebar" style="float:right;">
+      <div class="overflow-y-auto py-8 px-300 bg-gray-50 rounded dark:bg-gray-800">
+         <ul class="space-y-2">
+            <li>
+               <a href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                  <svg
+                     class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                     <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                  </svg>
+                  <span class="ml-3">Movies</span>
+               </a>
+            </li>
+            <li>
+               <button type="button"
+                  class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  aria-controls="dropdown-genre" data-collapse-toggle="dropdown-genre">
+                  <svg
+                     class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd"
+                        d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                        clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item="">Genres</span>
+                  <svg sidebar-toggle-item="" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                  </svg>
+               </button>
+               <ul id="dropdown-genre" class="hidden py-2 space-y-2">
+                  <li>
+                     <a id="28" value="28" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Action</a>
+                  </li>
+                  <li>
+                     <a id="12" value="12" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Adventure</a>
+                  </li>
+                  <li>
+                     <a id="16" value="16" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Animation</a>
+                  </li>
+                  <li>
+                     <a id="35" value="35" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Comedy</a>
+                  </li>
+                  <li>
+                     <a id="80" value="80" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Crime</a>
+                  </li>
+                  <li>
+                     <a id="99" value="99" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Documentary</a>
+                  </li>
+                  <li>
+                     <a id="18" value="18" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Drama
+                     </a>
+                  </li>
+                  <li>
+                     <a id="10751" value="10751" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Family</a>
+                  </li>
+                  <li>
+                     <a id="14" value="14" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Fantasy</a>
+                  </li>
+                  <li>
+                     <a id="36" value="36" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">History</a>
+                  </li>
+                  <li>
+                     <a id="27" value="27" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Horror</a>
+                  </li>
+                  <li>
+                     <a id="10402" value="10402" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Music</a>
+                  </li>
+                  <li>
+                     <a id="9648" value="9648" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Mystery</a>
+                  </li>
+                  <li>
+                     <a id="10749" value="10749" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Romance</a>
+                  </li>
+                  <li>
+                     <a id="878" value="878" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Science
+                        Fiction</a>
+                  </li>
+                  <li>
+                     <a id="10770" value="10770" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">TV
+                        Movie</a>
+                  </li>
+                  <li>
+                     <a id="53" value="53" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Thriller</a>
+                  </li>
+                  <li>
+                     <a id="10752" value="10752" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">War</a>
+                  </li>
+                  <li>
+                     <a id="37" value="37" href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Western</a>
+                  </li>
+               </ul>
+            </li>
+            <!-- <li>
+                    <button type="button"
+                       class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                       aria-controls="dropdown-date" data-collapse-toggle="dropdown-date">
+                       <svg
+                          class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                          fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                             d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                             clip-rule="evenodd"></path>
+                       </svg>
+                       <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item="">Dates</span>
+                       <svg sidebar-toggle-item="" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                             clip-rule="evenodd"></path>
+                       </svg>
+                    </button>
+                    <ul id="dropdown-date" class="hidden py-2 space-y-2">
+                       <li>
+                          <a href="#"
+                             class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">2020-</a>
+                       </li>
+                       <li>
+                          <a href="#"
+                             class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">2010-2020</a>
+                       </li>
+                       <li>
+                          <a href="#"
+                             class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">2000-2010</a>
+                       </li>
+                       <li>
+                          <a href="#"
+                             class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">1990's</a>
+                       </li>
+                       <li>
+                          <a href="#"
+                             class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">1980's</a>
+                       </li>
+                       <li>
+                          <a href="#"
+                             class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">1970's</a>
+                       </li>
+                       <li>
+                          <a href="#"
+                             class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Before
+                             70</a>
+                       </li>
+                    </ul>
+                 </li>
+      -->
+
+         </ul>
+      </div>
+
+      <div class="overflow-y-auto py-8 px-300 bg-gray-50 rounded dark:bg-gray-800">
+         <ul class="space-y-2">
+            <li>
+               <a href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                  <svg
+                     class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                     <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                  </svg>
+                  <span class="ml-3">Music</span>
+               </a>
+            </li>
+            <li>
+               <button type="button"
+                  class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  aria-controls="music-genre" data-collapse-toggle="music-genre">
+                  <svg
+                     class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd"
+                        d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                        clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item="">Genres</span>
+                  <svg sidebar-toggle-item="" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                  </svg>
+               </button>
+               <ul id="music-genre" class="hidden py-2 space-y-2">
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Pop</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Dance
+                        pop</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Rap</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Rock</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Latin</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Hip
+                        Hop</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Trap
+                        Latino</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Pop
+                        Rap</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Reggaeton</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Modern
+                        Rock</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Trap</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">edm</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Classic
+                        rock/a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">post-teen
+                        pop</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">country</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">filmi</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">K-pop</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">J-pop</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">europop</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">metal</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">blues</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">funk</a>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               <button type="button"
+                  class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  aria-controls="music-date" data-collapse-toggle="music-date">
+                  <svg
+                     class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd"
+                        d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                        clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item="">Dates</span>
+                  <svg sidebar-toggle-item="" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                  </svg>
+               </button>
+               <ul id="music-date" class="hidden py-2 space-y-2">
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">2020-</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">2010-2020</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">2000-2010</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">1990's</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">1980's</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">1970's</a>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Before
+                        70</a>
+                  </li>
+               </ul>
+            </li>
+
+
+         </ul>
+      </div>
+   </aside>
+
+   <div id="canvas" class="swiper mySwiper">
+      <div class="swiper-wrapper">
+
+         <div id="card1" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card1title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card1img src="">
+               </div>
+               <!-- <button id="btn1" style="color:white;">Detail</button> -->
+               
+            </div>
+         </div>
+         <div id="card2" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card2title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card2img src="">
+               </div>
+               </div>
+         </div>
+         <div id="card3" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card3title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card3img src="">
+               </div>
+               
+            </div>
+         </div>
+         <div id="card4" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card4title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card4img src="">
+               </div>
+               
+            </div>
+         </div>
+         <div id="card5" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card5title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card5img src="">
+               </div>
+              
+            </div>
+         </div>
+         <div id="card6" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card6title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card6img src="">
+               </div>
+               
+            </div>
+         </div>
+         <div id="card7" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card7title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card7img src="">
+               </div>
+               
+            </div>
+         </div>
+         <div id="card8" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card8title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card8img src="">
+               </div>
+               
+            </div>
+         </div>
+         <div id="card9" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card9title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card9img src="">
+               </div>
+              
+            </div>
+         </div>
+         <div id="card10" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card10title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card10img src="">
+               </div>
+               
+            </div>
+         </div>
+         <div id="card11" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card11title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card11img src="">
+               </div>
+              
+            </div>
+         </div>
+         <div id="card12" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card12title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card12img src="">
+               </div>
+              
+            </div>
+         </div>
+         <div id="card13" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card13title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card13img src="">
+               </div>
+               
+            </div>
+         </div>
+         <div id="card14" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card14title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card14img src="">
+               </div>
+               
+            </div>
+         </div>
+         <div id="card15" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card15title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card15img src="">
+               </div>
+               
+            </div>
+         </div>
+         <div id="card16" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card16title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card16img src="">
+               </div>
+              
+            </div>
+         </div>
+         <div id="card17" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card17title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card17img src="">
+               </div>
+              
+            </div>
+         </div>
+         <div id="card18" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card18title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card18img src="">
+               </div>
+               
+            </div>
+         </div>
+         <div id="card19" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card19title"></div>
+               <div>
+                  <img id=card19img src="">
+               </div>
+               
+            </div>
+         </div>
+         <div id="card20" class="swiper-slide">
+            <div class="cardstyle">
+               <div class="cardtitle" id="card20title"></div>
+               <div style="margin-bottom: 30px;">
+                  <img id=card20img src="">
+               </div>
+               
+            </div>
+         </div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+   </div>
+
+   <!-- modal -->
+   <div id="movie-modal" tabindex="-1"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+      <div class="relative p-4 w-full max-w-7xl h-full md:h-auto">
+         <!-- Modal content -->
+         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex justify-between items-center p-5 rounded-t border-b dark:border-gray-600">
+               <h3 id="modalTitle" class="text-xl font-medium text-gray-900 dark:text-white">
+               </h3>
+               <button type="button" id="cross"
+                  class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                  data-modal-toggle="extralarge-modal">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                  </svg>
+               </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modalstyle">
+               <div>
+                  <img id=modalImg src="">
+               </div>
+               <div class="p-6 space-y-6">
+                  <p id="modalYear"></p>
+                  <p id="modalID"></p>
+                  <p id="modalDiscription"></p>
+                  <p id="modalRating"></p>
+                  <!-- <iframe id="iframe" width="420" height="315" src="">
+                  </iframe> -->
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- modal -->
+
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+   <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+   <script src="sidebar.js"></script>
+</body>
+
+</html>
