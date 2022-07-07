@@ -126,10 +126,20 @@ function addFavOnLoad() {
     let arrayOfLocalStorageKeys = Object.keys(localStorageVariables);
     console.log(arrayOfLocalStorageKeys);
     allCards.forEach(function(card) {
-
-        if(arrayOfLocalStorageKeys.includes(card.dataset.objectid)) {
-            card.children[0].classList.add('fav');
-            card.children[0].src = "./assets/images/star-filled.png";
+        var qParams = readQueryString();
+        
+        if (qParams[1][1] === movieSearchTxt) {
+            if(arrayOfLocalStorageKeys.includes(card.dataset.objectid)) {
+                card.children[0].classList.add('fav');
+                card.children[0].src = "./assets/images/star-filled.png";
+            }
+        }
+        else if (qParams[1][1] === musicSearchTxt) {
+            var key = "9album9-" + card.dataset.artist.replaceAll(" ", "_") + "-" + card.dataset.album.replaceAll(" ", "_");
+            if(arrayOfLocalStorageKeys.includes(key)) {
+                card.children[0].classList.add('fav');
+                card.children[0].src = "./assets/images/star-filled.png";
+            }
         }
     })
 }
