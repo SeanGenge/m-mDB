@@ -18,6 +18,11 @@ function searchMovie(movie, page) {
     })
     .then(function(data) {
         if (data !== null) {
+            // Change the title to the name of the movie
+            var qParams = readQueryString();
+            var title = document.getElementById("search-title");
+            title.innerHTML = qParams[0][1].replace("%20", " ");
+            
             displaySearchedMovies(data);
         }
     });
@@ -31,6 +36,11 @@ function searchMusic(music) {
     })
     .then(function(data) {
         if (data !== null) {
+            // Change the title to the name of the artist
+            var qParams = readQueryString();
+            var title = document.getElementById("search-title");
+            title.innerHTML = qParams[0][1].replace("%20", " ");
+            
             displaySearchedMusic(data);
         }
     });

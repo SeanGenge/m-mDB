@@ -13,10 +13,11 @@ function getMovieCardHTML(movieDetails, index, inCarousel) {
 
 function getMusicCardHTML(musicDetails, index) {
     return `
-        <div id=${index} data-objectid="${musicDetails.idAlbum}">
+        <div class="mc" id=${index} data-artist="${musicDetails.strArtist}" data-album="${musicDetails.strAlbum}">
             <img class="star" src="./assets/images/star.png"/>
             <p class="movie-name">${musicDetails.strAlbumStripped}</p>
             <img class="poster" src="${musicDetails.strAlbumThumb}"/>
+            <p class="rating-circle">${Number(musicDetails.intScore).toFixed(1)}</p>
         </div>`
 }
 
@@ -39,6 +40,73 @@ function addStarEventListeners() {
                     element.src = "./assets/images/star-filled.png";
                 } else {
                     window.localStorage.removeItem(`${currentCard.dataset.objectid}`);
+                    element.src = "./assets/images/star.png";
+                }
+            })
+        })
+}
+
+function addStarEventListeners() {
+    starElements = document.querySelectorAll('.star');
+
+        // add event listener to each of the star elements
+        starElements.forEach(function(element) {
+            element.addEventListener('click', function() {
+                element.classList.toggle('fav')
+                console.log('clicked!')
+                let currentCard = element.closest('.swiper-slide');
+                
+                if (currentCard === null) {
+                    currentCard = element.closest(".mc");
+                }
+                
+                var qParams = readQueryString();
+                
+                if(element.classList.contains('fav')) {
+                    if (qParams[1][1] === movieSearchTxt) {
+                        window.localStorage.setItem(`${currentCard.dataset.objectid}`, `https://api.themoviedb.org/3/movie/${currentCard.dataset.objectid}?api_key=` + apiKey);
+                    }
+                    else if (qParams[1][1] === musicSearchTxt) {
+                        // these are the dataset values for the slide that has the star that's just been clicked
+                        let artistName = currentCard.dataset.artist;
+                        let albumName = currentCard.dataset.album;
+
+                        // the artist name can be one word, which works out well in the code, but it could also be multiple words, so, we need to check if it includes a ' ', and then replace that with an underscore
+                        if(artistName.includes(' ')) {
+                            artistName = artistName.replaceAll(' ', '_');
+                        }
+
+                        // the album name can be one word, which works out well in the code, but it could also be multiple words, so, we need to check if it includes a ' ', and then replace that with an underscore
+                        if(albumName.includes(' ')) {
+                            albumName = albumName.replaceAll(' ', '_');
+                        }
+            
+                        window.localStorage.setItem(`9album9-${artistName}-${albumName}`, `https://www.theaudiodb.com/api/v1/json/523532/searchalbum.php?s=${artistName}&a=${albumName}`);
+                    }
+                    
+                    element.src = "./assets/images/star-filled.png";
+                } else {
+                    if (qParams[1][1] === movieSearchTxt) {
+                        window.localStorage.removeItem(`${currentCard.dataset.objectid}`);
+                    }
+                    else if (qParams[1][1] === musicSearchTxt) {
+                        // these are the dataset values for the slide that has the star that's just been clicked
+                        let artistName = currentCard.dataset.artist;
+                        let albumName = currentCard.dataset.album;
+
+                        // the artist name can be one word, which works out well in the code, but it could also be multiple words, so, we need to check if it includes a ' ', and then replace that with an underscore
+                        if(artistName.includes(' ')) {
+                            artistName = artistName.replaceAll(' ', '_');
+                        }
+
+                        // the album name can be one word, which works out well in the code, but it could also be multiple words, so, we need to check if it includes a ' ', and then replace that with an underscore
+                        if(albumName.includes(' ')) {
+                            albumName = albumName.replaceAll(' ', '_');
+                        }
+            
+                        window.localStorage.removeItem(`9album9-${artistName}-${albumName}`)
+                    }
+                    
                     element.src = "./assets/images/star.png";
                 }
             })

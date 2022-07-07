@@ -23,7 +23,7 @@ body {
     position: relative;
     width: 300px;
     margin: 10px;
-    background: black;
+    background: var(--primary-colour);
     border-radius: 20px;
     transition: all .1s ease-in-out;
 }
@@ -36,7 +36,12 @@ body {
     position: relative;
 }
 
-
+#search-title {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 54px;
+    color: var(--white);
+}
 
 /* CSS FOR MOVIE CAROUSEL AND SONG CAROUSEL ON HOME PAGE */
 #movies-popular-now, #songs-most-popular {
