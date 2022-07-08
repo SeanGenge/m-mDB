@@ -10,7 +10,7 @@ function getNavigationHTML() {
                 <a href="./index.html" id="title" class="brand-logo">m&m DB</a>
                 <ul class="right">
                     <li><a class="dropdown-trigger" href="#" data-target="search-select">Search by...<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a id="favourites" class="waves-effect waves-light btn custom-btn">Favourites</a></li>
+                    <li><a href="./favouritesPage.html" id="favourites" class="waves-effect waves-light btn custom-btn">Favourites</a></li>
                     <!-- Sidebar (Hamburger Icon) -->
                     <li><a href="#" data-target="side-navbar" class="sidenav-trigger show-on-large right"><i class="material-icons">menu</i></a></li>
                 </ul>

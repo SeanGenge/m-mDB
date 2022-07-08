@@ -1,40 +1,55 @@
 <!DOCTYPE html>
 
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+  <head>
 
-        <title>Favourites</title>
+    <title>Favourites</title>
 
-        <!-- Swiper CDN -->
-        <link
-        rel="stylesheet"
-        href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
-        />
+    <!-- jQuery -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 
-        <!-- linking CSS file -->
-        <link rel="stylesheet" href="./assets/css/style.css" />
-    </head>
-
-    <body>
-
-        <!-- movies favourites container -->
-        <div id="root-to-append-favourites">
-
-
-
-
-        </div>
+    <!-- MaterialCSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <!-- Swiper CDN -->
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <!-- Our custom css -->
+    <link rel="stylesheet" href="./assets/css/global-vars.css" />
+    <link rel="stylesheet" href="./assets/css/navigation.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
 
 
 
+  <body>
+    <!-- Navigation bar -->
+    <div id="navigation-wrapper">
+      
+    </div>
+    
+    <div class="favourites-btns">
+        <button id="movie-btn">MOVIE FAVOURITES</button>
+        <button id="music-btn">MUSIC FAVOURITES</button>
+    </div>
+    
 
-        <!-- Swiper JS -->
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-        <!-- linking javascript file -->
-        <script src="./assets/js/favouritesPage.js"></script>
-    </body>
+    <!-- swiper CDN -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <!-- Material CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Our custom Scripts -->
+    <script src="./assets/js/global.js"></script>
+    <script src="./assets/js/navigation.js"></script>
+    <script src="./assets/js/search.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/favouritesPage.js"></script>
+  </body>
 </html>
