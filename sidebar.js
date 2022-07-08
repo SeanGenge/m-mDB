@@ -1,9 +1,13 @@
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 3,
+   // direction: "vertical",
     grid: {
-      rows: 2,
+    rows: 2,
+     spaceBetween:30
     },
-    spaceBetween: 30,
+    
+        mousewheel: true,
+    spaceBetween: 60,
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
@@ -125,7 +129,7 @@ $("#modalDiscription").text("Discription: "+ movieList.results[n].overview)
 $("#modalRating").text("Rating: "+movieList.results[n].vote_average)
 }
 
-
+addNavigationToPage();
 
 
 
