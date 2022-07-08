@@ -17,8 +17,7 @@
     color: var(--tertiary-colour) !important;
   }
   
-#search-bar {
-    margin-left: 200px;
+#search-form {
     width: 500px;
 }
 
@@ -30,9 +29,32 @@
     border-radius: 5px;
 }
 
-@media screen and (max-width: 1000px) {
-    #search-bar {
-        margin-left: 0;
+@media screen and (max-width: 1070px) {
+    #search-form {
         width: 400px;
     }
+}
+
+@media screen and (max-width: 980px) {
+  #search-form {
+      width: 300px;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  #search-form {
+      width: 250px;
+  }
+}
+
+@media screen and (max-width: 829px) {
+  #search-form {
+      width: 200px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  #search-form {
+      width: 150px;
+  }
 }

@@ -12,32 +12,38 @@ body {
     margin-left: 15px;
 }
 
-#searched-movies {
-    display: flex;
-    flex-wrap: wrap;
-    width: 90%;
-    justify-content: center;
+#search-results {
+    display: grid;
+    width: 95%;
     margin: 20px auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
+    grid-gap: 16px;
+    justify-content: center;
 }
 
-.movie-card {
+.search-card {
     position: relative;
     width: 300px;
     margin: 10px;
-    background: black;
+    background: var(--primary-colour);
     border-radius: 20px;
     transition: all .1s ease-in-out;
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    overflow: hidden;
 }
 
-.movie-card:hover {
+.search-card:hover {
     transform: scale(1.05); 
 }
 
-.mc {
-    position: relative;
+#search-title {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 54px;
+    color: var(--white);
 }
-
-
 
 /* CSS FOR MOVIE CAROUSEL AND SONG CAROUSEL ON HOME PAGE */
 #movies-popular-now, #songs-most-popular {
@@ -91,17 +97,19 @@ body {
     margin-right: auto;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 .rating-circle {
     padding: 10px;
-    background-color: rgb(33, 181, 33);
     display: inline-block;
     position: absolute;
     top: 5px;
     left: 5px;
     border-radius: 50%;
     margin: 0;
+    font-weight: bolder;
 }
 
 .mySwiper2 {
