@@ -5,8 +5,6 @@ const musicFavBtn = document.querySelector('#music-btn')
 const favoritesCardsSection = document.querySelector('.favourites-cards-section');
 let favPageMovieCards;
 let favPageAlbumCards;
-let starElementsForMovieCards;
-let starElementsAlbumCards;
 
 
 
@@ -33,7 +31,7 @@ localStorageValues.forEach(function(urlString) {
 
 
 // create a card for each of the movie urls
-movieLocalVariables.forEach(function(urlString) {
+movieLocalVariables.forEach(function(urlString, i) {
 
     // create fetch call
     fetch(urlString)
@@ -43,7 +41,7 @@ movieLocalVariables.forEach(function(urlString) {
 
         favoritesCardsSection.insertAdjacentHTML('beforeend', `
             <div class="swiper-slide fav-page-movie-card hide" data-objectid="${data.id}">
-                <img class="star star-movie favourite" src="./assets/images/star-filled.png"/>
+                <img class="star star-movie fav star-number-${i}" src="./assets/images/star-filled.png"/>
                 <p class="movie-name">${data.original_title}</p>
                 <img class="poster" src="https://image.tmdb.org/t/p/w500${data.poster_path}"/>
                 <p class="rating-circle ${Number(data.vote_average).toFixed(1) >= 7.5 ? "green" : Number(data.vote_average).toFixed(1) >= 5 ? "orange" : "red"}">${data.vote_average.toFixed(1)}</p>
@@ -54,24 +52,48 @@ movieLocalVariables.forEach(function(urlString) {
 
 
 
-        // add event listeners to all the star elements
-        starElementsForMovieCards = document.querySelectorAll('.star-movie');
+        // add event listeners to each star element
+        let starElementForCurrentIteration = document.querySelector(`.star-number-${i}`);
 
-        starElementsForMovieCards.forEach(function(starElement) {
+        starElementForCurrentIteration.addEventListener('click', function() {
 
-            starElement.addEventListener('click', function() {
+            let currentCard = starElementForCurrentIteration.closest('.fav-page-movie-card');
 
-                let currentCard = starElement.closest('.fav-page-movie-card');
+            if(starElementForCurrentIteration.classList.contains('fav')) {
 
-                starElement.classList.remove('fav');
+                starElementForCurrentIteration.classList.remove('fav');
 
-                starElement.src = "./assets/images/star.png"
+                starElementForCurrentIteration.src = "./assets/images/star.png"
 
                 window.localStorage.removeItem(`${currentCard.dataset.objectid}`)
+            } else {
 
-            })
+                starElementForCurrentIteration.classList.add('fav')
+
+                starElementForCurrentIteration.src = "./assets/images/star-filled.png"
+
+                window.localStorage.setItem(`${currentCard.dataset.objectid}`, `https://api.themoviedb.org/3/movie/${currentCard.dataset.objectid}?api_key=128647a13ca5ba337586e1fc48e4cbf6`)
+            }
 
         })
+
+
+
+        // starElementsForMovieCards.forEach(function(starElement) {
+
+        //     starElement.addEventListener('click', function() {
+
+        //         let currentCard = starElement.closest('.fav-page-movie-card');
+
+        //         starElement.classList.remove('fav');
+
+        //         starElement.src = "./assets/images/star.png"
+
+        //         window.localStorage.removeItem(`${currentCard.dataset.objectid}`)
+
+        //     })
+
+        // })
 
     })
 

@@ -28,7 +28,7 @@ function searchMovie(movie, page) {
         }
         else {
             var title = document.getElementById("search-title");
-            title.innerHTML = "Sorry, no movies were found!";
+            title.innerHTML = "Sorry, no movies were found";
         }
     });
 }
