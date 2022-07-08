@@ -17,13 +17,18 @@ function searchMovie(movie, page) {
         return response.json();
     })
     .then(function(data) {
-        if (data !== null) {
+        console.log(data);
+        if (data.results.length != 0) {
             // Change the title to the name of the movie
             var qParams = readQueryString();
             var title = document.getElementById("search-title");
             title.innerHTML = qParams[0][1].replace("%20", " ");
             
             displaySearchedMovies(data);
+        }
+        else {
+            var title = document.getElementById("search-title");
+            title.innerHTML = "Sorry, no movies were found!";
         }
     });
 }
@@ -35,13 +40,17 @@ function searchMusic(music) {
         return response.json();
     })
     .then(function(data) {
-        if (data !== null) {
+        if (data.album !== null) {
             // Change the title to the name of the artist
             var qParams = readQueryString();
             var title = document.getElementById("search-title");
             title.innerHTML = qParams[0][1].replace("%20", " ");
             
             displaySearchedMusic(data);
+        }
+        else {
+            var title = document.getElementById("search-title");
+            title.innerHTML = "Sorry, no albums were found";
         }
     });
 }

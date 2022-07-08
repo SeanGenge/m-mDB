@@ -7,7 +7,7 @@ function getMovieCardHTML(movieDetails, index, inCarousel) {
             <img class="star" src="./assets/images/star.png"/>
             <p class="movie-name">${movieDetails.original_title}</p>
             <img class="poster" src="https://image.tmdb.org/t/p/w500${movieDetails.poster_path}"/>
-            <p class="rating-circle">${movieDetails.vote_average.toFixed(1)}</p>
+            <p class="rating-circle ${movieDetails.vote_average.toFixed(1) >= 7.5 ? "green" : movieDetails.vote_average.toFixed(1) >= 5 ? "orange" : "red"}">${movieDetails.vote_average.toFixed(1)}</p>
         </div>`
 }
 
@@ -17,7 +17,7 @@ function getMusicCardHTML(musicDetails, index) {
             <img class="star" src="./assets/images/star.png"/>
             <p class="movie-name">${musicDetails.strAlbumStripped}</p>
             <img class="poster" src="${musicDetails.strAlbumThumb}"/>
-            <p class="rating-circle">${Number(musicDetails.intScore).toFixed(1)}</p>
+            <p class="rating-circle ${Number(musicDetails.intScore).toFixed(1) >= 7.5 ? "green" : Number(musicDetails.intScore).toFixed(1) >= 5 ? "orange" : "red"}">${Number(musicDetails.intScore).toFixed(1)}</p>
         </div>`
 }
 
@@ -63,7 +63,8 @@ function addStarEventListeners() {
                 var qParams = readQueryString();
                 
                 if(element.classList.contains('fav')) {
-                    if (qParams[1][1] === movieSearchTxt) {
+                    // If there are no query parameters, the default is a movie search
+                    if (qParams[0][0] === "" || qParams[1][1] === movieSearchTxt) {
                         window.localStorage.setItem(`${currentCard.dataset.objectid}`, `https://api.themoviedb.org/3/movie/${currentCard.dataset.objectid}?api_key=` + apiKey);
                     }
                     else if (qParams[1][1] === musicSearchTxt) {
@@ -86,7 +87,7 @@ function addStarEventListeners() {
                     
                     element.src = "./assets/images/star-filled.png";
                 } else {
-                    if (qParams[1][1] === movieSearchTxt) {
+                    if (qParams[0][0] === "" || qParams[1][1] === movieSearchTxt) {
                         window.localStorage.removeItem(`${currentCard.dataset.objectid}`);
                     }
                     else if (qParams[1][1] === musicSearchTxt) {
@@ -128,7 +129,7 @@ function addFavOnLoad() {
     allCards.forEach(function(card) {
         var qParams = readQueryString();
         
-        if (qParams[1][1] === movieSearchTxt) {
+        if (qParams[0][0] === "" || qParams[1][1] === movieSearchTxt) {
             if(arrayOfLocalStorageKeys.includes(card.dataset.objectid)) {
                 card.children[0].classList.add('fav');
                 card.children[0].src = "./assets/images/star-filled.png";
@@ -164,4 +165,9 @@ function readQueryString() {
     }
     
     return params;
+}
+
+function changeRatingColour(card) {
+    // Changes the rating colour on the cards
+    
 }

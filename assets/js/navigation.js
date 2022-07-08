@@ -7,21 +7,24 @@ function getNavigationHTML() {
     <div class="navbar-fixed">
         <nav id="navigation">
             <div class="nav-wrapper">
-                <a href="./index.html" id="title" class="brand-logo">m&m DB</a>
+                <a href="./index.html" id="title" class="brand-logo left">m&m DB</a>
                 <ul class="right">
                     <li><a class="dropdown-trigger" href="#" data-target="search-select">Search by...<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li>
+                        <!-- Search -->
+                        <div id="search-form">
+                            <div id="search-bar" class="input-field">
+                                <i class="material-icons prefix">search</i>
+                                <input id="search" type="text">
+                                <label id="lbl_search" for="search">Search Movies...</label>
+                            </div>
+                        </div>
+                    </li>
                     <li><a id="favourites" class="waves-effect waves-light btn custom-btn">Favourites</a></li>
                     <!-- Sidebar (Hamburger Icon) -->
                     <li><a href="#" data-target="side-navbar" class="sidenav-trigger show-on-large right"><i class="material-icons">menu</i></a></li>
                 </ul>
-                <!-- Search -->
-                <div id="search-form">
-                    <div id="search-bar" class="input-field">
-                        <i class="material-icons prefix">search</i>
-                        <input id="search" type="text">
-                        <label id="lbl_search" for="search">Search Movies...</label>
-                    </div>
-                </div>
+                
             </div>
         </nav>
         <ul id="search-select" class="dropdown-content">
