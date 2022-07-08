@@ -149,3 +149,24 @@ body {
 
 
 
+
+
+
+/* favourites page */
+.favourites-cards-section {
+    display: grid;
+    width: 95%;
+    margin: 20px auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
+    grid-gap: 16px;
+    justify-content: center;
+}
+
+.fav-page-movie-card, .fav-page-album-card {
+    margin: 20px;
+    margin-bottom: 100px;
+}
+
+.hide {
+    display: none;
+}

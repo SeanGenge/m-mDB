@@ -23,7 +23,7 @@ const fetchPopularMovies = function() {
                 <img class="star star-movie-carousel" src="./assets/images/star.png"/>
                 <p class="movie-name">${element.original_title}</p>
                 <img class="poster" src="https://image.tmdb.org/t/p/w500${element.poster_path}"/>
-                <p class="rating-circle">${element.vote_average.toFixed(1)}</p>
+                <p class="rating-circle ${Number(element.vote_average).toFixed(1) >= 7.5 ? "green" : Number(element.vote_average).toFixed(1) >= 5 ? "orange" : "red"}">${element.vote_average.toFixed(1)}</p>
             </div>`
             )
         })
