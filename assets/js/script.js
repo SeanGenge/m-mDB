@@ -155,7 +155,7 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
         swiperWrapperSongs.insertAdjacentHTML('beforeend', 
             `<div class="swiper-slide swiper-slide-album" data-artist="${object.strArtist}" data-album="${object.strAlbum}">
                 <img class="star-song" src="./assets/images/star.png"/>
-                <p class="song-name">${object.strAlbum}</p>
+                <p class="album-name">${object.strAlbum}</p>
                 <img class="poster" src="${object.strAlbumThumb}"/>
                 <p class="rating-circle ${Number(object.intScore).toFixed(1) >= 7.5 ? "green" : Number(object.intScore).toFixed(1) >= 5 ? "orange" : "red"}">${Number(object.intScore).toFixed(1)}</p>
             </div>`

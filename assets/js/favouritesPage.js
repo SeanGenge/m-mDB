@@ -5,6 +5,8 @@ const musicFavBtn = document.querySelector('#music-btn')
 const favoritesCardsSection = document.querySelector('.favourites-cards-section');
 let favPageMovieCards;
 let favPageAlbumCards;
+let starElementsForMovieCards;
+let starElementsAlbumCards;
 
 
 
@@ -31,7 +33,7 @@ localStorageValues.forEach(function(urlString) {
 
 
 // create a card for each of the movie urls
-movieLocalVariables.forEach(function(urlString, i) {
+movieLocalVariables.forEach(function(urlString) {
 
     // create fetch call
     fetch(urlString)
@@ -40,9 +42,8 @@ movieLocalVariables.forEach(function(urlString, i) {
         console.log(data)
 
         favoritesCardsSection.insertAdjacentHTML('beforeend', `
-            <!-- slide ${i+1} -->
             <div class="swiper-slide fav-page-movie-card hide" data-objectid="${data.id}">
-                <img class="star fav" src="./assets/images/star-filled.png"/>
+                <img class="star star-movie favourite" src="./assets/images/star-filled.png"/>
                 <p class="movie-name">${data.original_title}</p>
                 <img class="poster" src="https://image.tmdb.org/t/p/w500${data.poster_path}"/>
                 <p class="rating-circle ${Number(data.vote_average).toFixed(1) >= 7.5 ? "green" : Number(data.vote_average).toFixed(1) >= 5 ? "orange" : "red"}">${data.vote_average.toFixed(1)}</p>
@@ -51,9 +52,32 @@ movieLocalVariables.forEach(function(urlString, i) {
 
         favPageMovieCards = document.querySelectorAll('.fav-page-movie-card')
 
+
+
+        // add event listeners to all the star elements
+        starElementsForMovieCards = document.querySelectorAll('.star-movie');
+
+        starElementsForMovieCards.forEach(function(starElement) {
+
+            starElement.addEventListener('click', function() {
+
+                let currentCard = starElement.closest('.fav-page-movie-card');
+
+                starElement.classList.remove('fav');
+
+                starElement.src = "./assets/images/star.png"
+
+                window.localStorage.removeItem(`${currentCard.dataset.objectid}`)
+
+            })
+
+        })
+
     })
 
 })
+
+
 
 
 
@@ -71,7 +95,7 @@ localStorageValues.forEach(function(urlString) {
 
 
 // create a card for each of the movie urls
-musicLocalVariables.forEach(function(urlString, i) {
+musicLocalVariables.forEach(function(urlString) {
 
     // create fetch call
     fetch(urlString)
@@ -80,14 +104,14 @@ musicLocalVariables.forEach(function(urlString, i) {
         console.log(data)
 
         favoritesCardsSection.insertAdjacentHTML('beforeend', `
-            <!-- slide ${i+1} -->
-            <div class="swiper-slide fav-page-album-card hide" data-objectid="${data.album[0].idAlbum}">
-                <img class="star fav fav-song" src="./assets/images/star-filled.png"/>
-                <p class="movie-name">${data.album[0].strAlbum}</p>
+            <div class="swiper-slide fav-page-album-card hide" data-artist="${data.album[0].strArtist}" data-album="${data.album[0].strAlbum}">
+                <img class="star" src="./assets/images/star-filled.png"/>
+                <p class="album-name">${data.album[0].strAlbum}</p>
                 <img class="poster" src="${data.album[0].strAlbumThumb}"/>
                 <p class="rating-circle ${Number(data.album[0].intScore).toFixed(1) >= 7.5 ? "green" : Number(data.album[0].intScore).toFixed(1) >= 5 ? "orange" : "red"}">${Number(data.album[0].intScore).toFixed(1)}</p>
             </div>
-        `)
+            `
+        )
 
         favPageAlbumCards = document.querySelectorAll('.fav-page-album-card');
 

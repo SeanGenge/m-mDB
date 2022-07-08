@@ -70,7 +70,7 @@ body {
     transform: scale(1.05);
 }
 
-.movie-name, .song-name {
+.movie-name, .album-name {
     color: var(--white);
     text-align: center;
     font-weight: bold;
@@ -131,7 +131,7 @@ body {
 
 #movie-btn, #music-btn {
     margin: 30px;
-    padding: 15px 40px;
+    padding: 15px 20px;
     background-color: #26a69a;
     color: white;
     letter-spacing: 0.5px;
