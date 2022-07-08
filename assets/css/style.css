@@ -124,9 +124,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 90px;
+    margin-top: 30px;
     margin-bottom: 90px;
-    background-color: red;
 }
 
 #movie-btn, #music-btn {
@@ -146,13 +145,6 @@ body {
     cursor: pointer;
 }
 
-
-
-
-
-
-
-/* favourites page */
 .favourites-cards-section {
     display: grid;
     width: 95%;
@@ -169,4 +161,11 @@ body {
 
 .hide {
     display: none;
+}
+
+#favourites-page-h4-text {
+    color: white;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 40px;
 }
