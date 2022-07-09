@@ -11,7 +11,7 @@ let allCards;
 let starElements;
 let favouritesArrayURLS = [];
 
-
+// modal variables
 let modalPoster = document.querySelector('.modal-poster');
 
 // variables for movies
@@ -47,6 +47,7 @@ const fetchPopularMovies = function() {
                     <p class="movie-name">${element.original_title}</p>
                     
                     <img class="poster" src="https://image.tmdb.org/t/p/w500${element.poster_path}"/>
+
                     <p class="rating-circle ${Number(element.vote_average).toFixed(1) >= 7.5 ? "green" : Number(element.vote_average).toFixed(1) >= 5 ? "orange" : "red"}">${element.vote_average.toFixed(1)}</p>
                 </div>
             </div>`
@@ -104,38 +105,36 @@ const fetchPopularMovies = function() {
 
 
         allCards.forEach(function(card, i) {
-            card.addEventListener('click', function(e) {
-                console.log(data.results[i]);
-
-                // turn off album info
             
-                modalAlbumTitle.textContent = ``;
-                modalAlbumArtist.textContent = ``;
-                modalAlbumReleaseDate.textContent = ``;
-                modalAlbumStyle.textContent = ``;
-                modalAlbumGenre.textContent = ``;
-                modalAlbumScore.textContent = ``;
+            dynamicallyRenderModal(card, data.results[i], true)
+            
+            
+            // card.addEventListener('click', function(e) {
+            //     console.log(data.results[i]);
 
-                // change image dynamically
-                modalPoster.src = `https://image.tmdb.org/t/p/w500${data.results[i].poster_path}`
+            //     // turn off album info
+            //     modalAlbumTitle.textContent = ``;
+            //     modalAlbumArtist.textContent = ``;
+            //     modalAlbumReleaseDate.textContent = ``;
+            //     modalAlbumStyle.textContent = ``;
+            //     modalAlbumGenre.textContent = ``;
+            //     modalAlbumScore.textContent = ``;
 
-                // change movie info dynamically
-                modalMovieTitle.textContent = `${data.results[i].original_title}`
+            //     // change image dynamically
+            //     modalPoster.src = `https://image.tmdb.org/t/p/w500${data.results[i].poster_path}`
 
-                modalMovieRating.textContent = `Rating: ${data.results[i].vote_average}`
+            //     // change movie info dynamically
+            //     modalMovieTitle.textContent = `${data.results[i].original_title}`
 
-                modalMovieReleaseDate.textContent = `Release Date: ${data.results[i].release_date}`
+            //     modalMovieRating.textContent = `Rating: ${data.results[i].vote_average}`
 
-                modalMovieDescription.textContent = `Description: ${data.results[i].overview}`
+            //     modalMovieReleaseDate.textContent = `Release Date: ${data.results[i].release_date}`
 
-            })
+            //     modalMovieDescription.textContent = `Description: ${data.results[i].overview}`
+
+            // })
+
         })
-
-
-
-
-
-
 
     })
 
@@ -348,33 +347,10 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
         $('.modal').modal()
     })
     
-
-
     allAlbumCards.forEach(function(card, i) {
 
-        card.addEventListener('click', function(e) {
-            console.log(data.loved[i])
+        dynamicallyRenderModal(card, data.loved[i], false)
 
-            console.log(e.target);
-
-            // turn off movie info
-            modalMovieTitle.textContent = ``;
-            modalMovieRating.textContent = ``;
-            modalMovieReleaseDate.textContent = ``;
-            modalMovieDescription.textContent = ``;
-
-
-            // change image dynamically
-            modalPoster.src = `${data.loved[i].strAlbumThumb}`;
-
-            // change album info dynamically
-            modalAlbumTitle.textContent = `Album Name: ${data.loved[i].strAlbum}`
-            modalAlbumArtist.textContent = `Artist Name: ${data.loved[i].strArtist}`;
-            modalAlbumReleaseDate.textContent = `Year Released: ${data.loved[i].intYearReleased}`;
-            modalAlbumStyle.textContent = `Style: ${data.loved[i].strStyle}`;
-            modalAlbumGenre.textContent = `Genre: ${data.loved[i].strGenre}`;
-            modalAlbumScore.textContent = `Score: ${data.loved[i].intScore}`;
-        })
     })
 
 })
