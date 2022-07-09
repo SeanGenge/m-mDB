@@ -99,11 +99,11 @@ const fetchPopularMovies = function() {
 
                 modalTitle.textContent = `${data.results[i].original_title}`
 
-                modalRating.textContent = `${data.results[i].vote_average}`
+                modalRating.textContent = `Rating: ${data.results[i].vote_average}`
 
-                modalReleaseDate.textContent = `${data.results[i].release_date}`
+                modalReleaseDate.textContent = `Release Date: ${data.results[i].release_date}`
 
-                modalDescription.textContent = `${data.results[i].overview}`
+                modalDescription.textContent = `Description: ${data.results[i].overview}`
 
             })
         })

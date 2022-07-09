@@ -169,3 +169,38 @@ body {
     margin-top: 100px;
     margin-bottom: 40px;
 }
+
+
+
+
+
+/* modal CSS */
+
+#modal1 {
+    border-radius: 10px;
+    width: 60vw;
+    height: auto;
+    background-color: var(--primary-colour);
+    color: var(--white);
+}
+
+.modal-content {
+    display: flex;
+    align-items: center;
+}
+
+.right-side {
+    margin: 10px 30px;
+}
+
+.modal-movie-title {
+    font-size: 2.3rem;
+}
+
+
+
+.modal-poster {
+    display: block;
+    height: 300px;
+    border-radius: 10px;
+}
