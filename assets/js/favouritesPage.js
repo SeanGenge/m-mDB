@@ -11,13 +11,13 @@ let favPageAlbumCards;
 // modal variables
 let modalPoster = document.querySelector('.modal-poster');
 
-// variables for movies
+// modal variables for movies
 let modalMovieTitle = document.querySelector('.modal-movie-title');
 let modalMovieRating = document.querySelector('.modal-movie-rating');
 let modalMovieReleaseDate = document.querySelector('.modal-release-date');
 let modalMovieDescription = document.querySelector('.modal-description');
 
-// variables for albums
+// modal variables for albums
 let modalAlbumTitle = document.querySelector('.modal-album-title');
 let modalAlbumArtist = document.querySelector('.modal-album-artist');
 let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
@@ -117,13 +117,15 @@ movieLocalVariables.forEach(function(urlString, i) {
 
 
 
-        // adding modal functionality (outsource)
+        // adding modal functionality (outsourced to modal.js)
         $('document').ready(function() {
             $('.modal').modal()
         })
 
+        // select current iteration's movie card
         const currentIterationMovieCard = document.querySelector(`.movie-card-${i}`)
 
+        // render modal
         dynamicallyRenderModal(currentIterationMovieCard, data, true)
 
     })
@@ -231,13 +233,15 @@ musicLocalVariables.forEach(function(urlString, i) {
 
 
 
-        // add event listener to each card (outsource this completely to another file when you're done)
+        // adding modal functionality (outsourced to modal.js)
         $('document').ready(function() {
             $('.modal').modal()
         })
 
+        // select current iteration's album card
         const currentIterationAlbumCard = document.querySelector(`.album-card-${i}`)
 
+        // render modal
         dynamicallyRenderModal(currentIterationAlbumCard, data.album[0], false)
 
     })

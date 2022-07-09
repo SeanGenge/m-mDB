@@ -175,7 +175,6 @@ body {
 
 
 /* modal CSS */
-
 #modal1 {
     border-radius: 10px;
     width: 60vw;
@@ -193,11 +192,9 @@ body {
     margin: 10px 30px;
 }
 
-.modal-movie-title {
+.modal-movie-title, .modal-album-title {
     font-size: 2.3rem;
 }
-
-
 
 .modal-poster {
     display: block;

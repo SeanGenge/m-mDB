@@ -1,7 +1,4 @@
 
-
-
-
 // most popular movies section
 
 // creating necessary variables
@@ -11,22 +8,25 @@ let allCards;
 let starElements;
 let favouritesArrayURLS = [];
 
+
+
 // modal variables
 let modalPoster = document.querySelector('.modal-poster');
 
-// variables for movies
+// modal variables for movies
 let modalMovieTitle = document.querySelector('.modal-movie-title');
 let modalMovieRating = document.querySelector('.modal-movie-rating');
 let modalMovieReleaseDate = document.querySelector('.modal-release-date');
 let modalMovieDescription = document.querySelector('.modal-description');
 
-// variables for albums
+// modal variables for albums
 let modalAlbumTitle = document.querySelector('.modal-album-title');
 let modalAlbumArtist = document.querySelector('.modal-album-artist');
 let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
 let modalAlbumStyle = document.querySelector('.modal-album-style');
 let modalAlbumGenre = document.querySelector('.modal-album-genre');
 let modalAlbumScore = document.querySelector('.modal-album-score');
+
 
 
 
@@ -38,6 +38,7 @@ const fetchPopularMovies = function() {
     .then(data => {
         console.log(data)
         
+        // create slide for each movie retrieved from API call
         data.results.forEach(function(element, i) {
             swiperWrapperMovies.insertAdjacentHTML('beforeend', 
             `<div class="swiper-slide movie-carousel-slide" id=${i} data-objectid="${element.id}">
@@ -97,42 +98,17 @@ const fetchPopularMovies = function() {
         })
 
 
-        // add event listener to each card (outsource this completely to another file when you're done)
+
+        // add modal functionality to each card
         $('document').ready(function() {
             $('.modal').modal()
         })
 
-
-
+        // loop through all cards
         allCards.forEach(function(card, i) {
             
-            dynamicallyRenderModal(card, data.results[i], true)
-            
-            
-            // card.addEventListener('click', function(e) {
-            //     console.log(data.results[i]);
-
-            //     // turn off album info
-            //     modalAlbumTitle.textContent = ``;
-            //     modalAlbumArtist.textContent = ``;
-            //     modalAlbumReleaseDate.textContent = ``;
-            //     modalAlbumStyle.textContent = ``;
-            //     modalAlbumGenre.textContent = ``;
-            //     modalAlbumScore.textContent = ``;
-
-            //     // change image dynamically
-            //     modalPoster.src = `https://image.tmdb.org/t/p/w500${data.results[i].poster_path}`
-
-            //     // change movie info dynamically
-            //     modalMovieTitle.textContent = `${data.results[i].original_title}`
-
-            //     modalMovieRating.textContent = `Rating: ${data.results[i].vote_average}`
-
-            //     modalMovieReleaseDate.textContent = `Release Date: ${data.results[i].release_date}`
-
-            //     modalMovieDescription.textContent = `Description: ${data.results[i].overview}`
-
-            // })
+            // render modal for each card
+            dynamicallyRenderModal(card, data.results[i], true)  
 
         })
 
@@ -141,6 +117,8 @@ const fetchPopularMovies = function() {
 }
 
 fetchPopularMovies();
+
+
 
 // slider options for Popular movies carousel
 let movieSwiper = new Swiper(".mySwiper", {
@@ -192,12 +170,16 @@ let movieSwiper = new Swiper(".mySwiper", {
 
 
 
+
+
 // most popular songs section
 
 // creating necessary variables
 let popularAlbumsArray20 = [];
 let starSongElements;
 let allAlbumCards;
+
+
 
 // fetching album data from audioDB
 fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
@@ -255,6 +237,7 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
         }
 
     })
+
 
 
     let artistNameString;
@@ -342,20 +325,21 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
     })
 
 
-    // add event listener to each card (outsource this completely to another file when you're done)
+
+    // add modal functionality to all cards
     $('document').ready(function() {
         $('.modal').modal()
     })
     
+    // loop through all cards
     allAlbumCards.forEach(function(card, i) {
 
+        // render modal for each card
         dynamicallyRenderModal(card, data.loved[i], false)
 
     })
 
 })
-
-
 
 
 
