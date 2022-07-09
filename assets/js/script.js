@@ -1,6 +1,4 @@
 
-// create a global variable for the data about the movies in the carousel. This way, it can be accessed in other js files (don't need to do another fetch request)
-let movieDataFromFetch;
 
 
 
@@ -19,13 +17,10 @@ const fetchPopularMovies = function() {
     .then(responce => responce.json())
     .then(data => {
         console.log(data)
-
-        movieDataFromFetch = data.results;
         
         data.results.forEach(function(element, i) {
             swiperWrapperMovies.insertAdjacentHTML('beforeend', 
-            `<!-- slide ${i+1} -->
-            <div data-target="modal1" class="modal-trigger swiper-slide movie-carousel-slide" id=${i} data-objectid="${element.id}">
+            `<div data-target="modal1" class="modal-trigger swiper-slide movie-carousel-slide" id=${i} data-objectid="${element.id}">
                 <img class="star star-movie-carousel" src="./assets/images/star.png"/>
                 <p class="movie-name">${element.original_title}</p>
 
@@ -83,11 +78,23 @@ const fetchPopularMovies = function() {
             $('.modal').modal()
         })
 
+        // variable for movie and album image
         let modalPoster = document.querySelector('.modal-poster');
-        let modalTitle = document.querySelector('.modal-movie-title');
-        let modalRating = document.querySelector('.modal-movie-rating');
-        let modalReleaseDate = document.querySelector('.modal-release-date');
-        let modalDescription = document.querySelector('.modal-description');
+
+        // variables for movies
+        let modalMovieTitle = document.querySelector('.modal-movie-title');
+        let modalMovieRating = document.querySelector('.modal-movie-rating');
+        let modalMovieReleaseDate = document.querySelector('.modal-release-date');
+        let modalMovieDescription = document.querySelector('.modal-description');
+
+        // variables for albums
+        let modalAlbumTitle = document.querySelector('.modal-album-title')
+        let modalAlbumArtist = document.querySelector('.modal-album-artist');
+        let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
+        let modalAlbumStyle = document.querySelector('.modal-album-style');
+        let modalAlbumGenre = document.querySelector('.modal-album-genre')
+        let modalAlbumDescription = document.querySelector('.movie-album-description');
+        let modalAlbumScore = document.querySelector('.modal-album-score');
 
 
 
@@ -95,15 +102,26 @@ const fetchPopularMovies = function() {
             card.addEventListener('click', function(e) {
                 console.log(data.results[i]);
 
+                // turn off album info
+                modalAlbumTitle = ``;
+                modalAlbumArtist = ``;
+                modalAlbumReleaseDate = ``;
+                modalAlbumStyle = ``;
+                modalAlbumGenre = ``;
+                modalAlbumDescription = ``;
+                modalAlbumScore = ``;
+
+                // change image dynamically
                 modalPoster.src = `https://image.tmdb.org/t/p/w500${data.results[i].poster_path}`
 
-                modalTitle.textContent = `${data.results[i].original_title}`
+                // change movie info dynamically
+                modalMovieTitle.textContent = `${data.results[i].original_title}`
 
-                modalRating.textContent = `Rating: ${data.results[i].vote_average}`
+                modalMovieRating.textContent = `Rating: ${data.results[i].vote_average}`
 
-                modalReleaseDate.textContent = `Release Date: ${data.results[i].release_date}`
+                modalMovieReleaseDate.textContent = `Release Date: ${data.results[i].release_date}`
 
-                modalDescription.textContent = `Description: ${data.results[i].overview}`
+                modalMovieDescription.textContent = `Description: ${data.results[i].overview}`
 
             })
         })
@@ -197,7 +215,7 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
     popularAlbumsArray20.forEach(function(object, i) {
 
         swiperWrapperSongs.insertAdjacentHTML('beforeend', 
-            `<div class="swiper-slide swiper-slide-album" data-artist="${object.strArtist}" data-album="${object.strAlbum}">
+            `<div data-target="modal1" class="modal-trigger swiper-slide swiper-slide-album" data-artist="${object.strArtist}" data-album="${object.strAlbum}">
                 <img class="star-song" src="./assets/images/star.png"/>
                 <p class="album-name">${object.strAlbum}</p>
                 <img class="poster" src="${object.strAlbumThumb}"/>
@@ -316,7 +334,66 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
 
     })
 
+
+    // add event listener to each card (outsource this completely to another file when you're done)
+    $('document').ready(function() {
+        $('.modal').modal()
+    })
+
+
+
+    // variable for movie and album image
+    let modalPoster = document.querySelector('.modal-poster');
+
+    // variables for movies
+    let modalMovieTitle = document.querySelector('.modal-movie-title');
+    let modalMovieRating = document.querySelector('.modal-movie-rating');
+    let modalMovieReleaseDate = document.querySelector('.modal-release-date');
+    let modalMovieDescription = document.querySelector('.modal-description');
+
+    // variables for albums
+    let modalAlbumTitle = document.querySelector('.modal-album-title')
+    let modalAlbumArtist = document.querySelector('.modal-album-artist');
+    let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
+    let modalAlbumStyle = document.querySelector('.modal-album-style');
+    let modalAlbumGenre = document.querySelector('.modal-album-genre')
+    let modalAlbumDescription = document.querySelector('.movie-album-description');
+    let modalAlbumScore = document.querySelector('.modal-album-score');
+    
+
+
+    allAlbumCards.forEach(function(card, i) {
+
+        card.addEventListener('click', function(e) {
+            console.log(data.loved[i])
+
+            // turn off movie info
+            modalMovieTitle.textContent = ``;
+            modalMovieRating.textContent = ``;
+            modalMovieReleaseDate.textContent = ``;
+            modalMovieDescription.textContent = ``;
+
+
+            // change image dynamically
+            modalPoster.src = `${data.loved[i].strAlbumThumb}`;
+
+            // change album info dynamically
+            modalAlbumTitle.textContent = `Album Name: ${data.loved[i].strAlbum}`
+            modalAlbumArtist.textContent = `Artist Name: ${data.loved[i].strArtist}`;
+            modalAlbumReleaseDate.textContent = `Year Released: ${data.loved[i].intYearReleased}`;
+            modalAlbumStyle.textContent = `Style: ${data.loved[i].strStyle}`;
+            modalAlbumGenre.textContent = `Genre: ${data.loved[i].strGenre}`;
+            modalAlbumDescription.textContent = `Description: ${data.loved[i].strDescription}`;
+            modalAlbumScore.textContent = `Score: ${data.loved[i].intScore}`;
+
+        })
+    })
+
 })
+
+
+
+
 
 // slider options for popular songs
 let songSwiper = new Swiper(".mySwiper2", {
