@@ -23,7 +23,7 @@ function getNavigationHTML() {
                     <li><a id="favourites" href="./favouritesPage.html" class="waves-effect waves-light btn custom-btn">Favourites</a></li>
 
                     <!-- Sidebar (Hamburger Icon) -->
-                    <li><a href="#" data-target="side-navbar" class="sidenav-trigger show-on-large right"><i class="material-icons">menu</i></a></li>
+                    <li><a href="./sidebar.html" data-target="side-navbar" class="sidenav-trigger show-on-large right"><i class="material-icons">menu</i></a></li>
                 </ul>
                 
             </div>
