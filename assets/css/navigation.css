@@ -29,6 +29,35 @@
     border-radius: 5px;
 }
 
+/* Side navbar */
+#side-navbar {
+  background-color: var(--tertiary-colour);
+}
+
+#side-navbar li a {
+  color: var(--white);
+}
+
+#side-navbar li a:hover {
+  background-color: var(--secondary-colour);
+  cursor: pointer;
+}
+
+#side-navbar li .subheader {
+  font-weight: bolder;
+  font-size: 24px;
+  text-decoration: underline;
+  text-align: center;
+}
+
+#movie-genres {
+  background-color: var(--tertiary-colour);
+}
+
+#movie-dates {
+  background-color: var(--tertiary-colour);
+}
+
 @media screen and (max-width: 1070px) {
     #search-form {
         width: 400px;
