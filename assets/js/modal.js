@@ -1,14 +1,10 @@
 
-// let movieTitle = document.querySelector('.modal-movie-title')
 
 
 
+// const closeModal = function() {
 
+//     $('#modal1').modal('close');
+    
+// }
 
-
-
-
-
-// $('document').ready(function() {
-//     $('.modal').modal()
-// })

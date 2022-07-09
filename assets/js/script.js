@@ -11,6 +11,26 @@ let allCards;
 let starElements;
 let favouritesArrayURLS = [];
 
+
+let modalPoster = document.querySelector('.modal-poster');
+
+// variables for movies
+let modalMovieTitle = document.querySelector('.modal-movie-title');
+let modalMovieRating = document.querySelector('.modal-movie-rating');
+let modalMovieReleaseDate = document.querySelector('.modal-release-date');
+let modalMovieDescription = document.querySelector('.modal-description');
+
+// variables for albums
+let modalAlbumTitle = document.querySelector('.modal-album-title');
+let modalAlbumArtist = document.querySelector('.modal-album-artist');
+let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
+let modalAlbumStyle = document.querySelector('.modal-album-style');
+let modalAlbumGenre = document.querySelector('.modal-album-genre');
+let modalAlbumScore = document.querySelector('.modal-album-score');
+
+
+
+
 // creating a function for fetching the "popular" category of movie data
 const fetchPopularMovies = function() {
     fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=` + apiKey)
@@ -33,7 +53,7 @@ const fetchPopularMovies = function() {
 
 
         // add the 'fav' class to all the cards in the movie carousel that have their id stored in local storage
-        allCards = document.querySelectorAll('.swiper-slide');
+        allCards = document.querySelectorAll('.movie-carousel-slide');
 
         let localStorageVariables = {...localStorage};
 
@@ -78,23 +98,22 @@ const fetchPopularMovies = function() {
             $('.modal').modal()
         })
 
-        // variable for movie and album image
-        let modalPoster = document.querySelector('.modal-poster');
+        // // variable for movie and album image
+        // let modalPoster = document.querySelector('.modal-poster');
 
-        // variables for movies
-        let modalMovieTitle = document.querySelector('.modal-movie-title');
-        let modalMovieRating = document.querySelector('.modal-movie-rating');
-        let modalMovieReleaseDate = document.querySelector('.modal-release-date');
-        let modalMovieDescription = document.querySelector('.modal-description');
+        // // variables for movies
+        // let modalMovieTitle = document.querySelector('.modal-movie-title');
+        // let modalMovieRating = document.querySelector('.modal-movie-rating');
+        // let modalMovieReleaseDate = document.querySelector('.modal-release-date');
+        // let modalMovieDescription = document.querySelector('.modal-description');
 
-        // variables for albums
-        let modalAlbumTitle = document.querySelector('.modal-album-title')
-        let modalAlbumArtist = document.querySelector('.modal-album-artist');
-        let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
-        let modalAlbumStyle = document.querySelector('.modal-album-style');
-        let modalAlbumGenre = document.querySelector('.modal-album-genre')
-        let modalAlbumDescription = document.querySelector('.movie-album-description');
-        let modalAlbumScore = document.querySelector('.modal-album-score');
+        // // variables for albums
+        // let modalAlbumTitle = document.querySelector('.modal-album-title')
+        // let modalAlbumArtist = document.querySelector('.modal-album-artist');
+        // let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
+        // let modalAlbumStyle = document.querySelector('.modal-album-style');
+        // let modalAlbumGenre = document.querySelector('.modal-album-genre')
+        // let modalAlbumScore = document.querySelector('.modal-album-score');
 
 
 
@@ -103,13 +122,13 @@ const fetchPopularMovies = function() {
                 console.log(data.results[i]);
 
                 // turn off album info
-                modalAlbumTitle = ``;
-                modalAlbumArtist = ``;
-                modalAlbumReleaseDate = ``;
-                modalAlbumStyle = ``;
-                modalAlbumGenre = ``;
-                modalAlbumDescription = ``;
-                modalAlbumScore = ``;
+            
+                modalAlbumTitle.textContent = ``;
+                modalAlbumArtist.textContent = ``;
+                modalAlbumReleaseDate.textContent = ``;
+                modalAlbumStyle.textContent = ``;
+                modalAlbumGenre.textContent = ``;
+                modalAlbumScore.textContent = ``;
 
                 // change image dynamically
                 modalPoster.src = `https://image.tmdb.org/t/p/w500${data.results[i].poster_path}`
@@ -342,23 +361,22 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
 
 
 
-    // variable for movie and album image
-    let modalPoster = document.querySelector('.modal-poster');
+    // // variable for movie and album image
+    // let modalPoster = document.querySelector('.modal-poster');
 
-    // variables for movies
-    let modalMovieTitle = document.querySelector('.modal-movie-title');
-    let modalMovieRating = document.querySelector('.modal-movie-rating');
-    let modalMovieReleaseDate = document.querySelector('.modal-release-date');
-    let modalMovieDescription = document.querySelector('.modal-description');
+    // // variables for movies
+    // let modalMovieTitle = document.querySelector('.modal-movie-title');
+    // let modalMovieRating = document.querySelector('.modal-movie-rating');
+    // let modalMovieReleaseDate = document.querySelector('.modal-release-date');
+    // let modalMovieDescription = document.querySelector('.modal-description');
 
-    // variables for albums
-    let modalAlbumTitle = document.querySelector('.modal-album-title')
-    let modalAlbumArtist = document.querySelector('.modal-album-artist');
-    let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
-    let modalAlbumStyle = document.querySelector('.modal-album-style');
-    let modalAlbumGenre = document.querySelector('.modal-album-genre')
-    let modalAlbumDescription = document.querySelector('.movie-album-description');
-    let modalAlbumScore = document.querySelector('.modal-album-score');
+    // // variables for albums
+    // let modalAlbumTitle = document.querySelector('.modal-album-title')
+    // let modalAlbumArtist = document.querySelector('.modal-album-artist');
+    // let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
+    // let modalAlbumStyle = document.querySelector('.modal-album-style');
+    // let modalAlbumGenre = document.querySelector('.modal-album-genre')
+    // let modalAlbumScore = document.querySelector('.modal-album-score');
     
 
 
@@ -366,6 +384,17 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
 
         card.addEventListener('click', function(e) {
             console.log(data.loved[i])
+
+            // console.log(e.target);
+
+            // // if the star was clicked, don't open the modal
+            // if(e.target.classList.contains('star-song')) {
+            //     console.log('indeed')
+
+            //     $('#modal1').modal('close');
+
+            //     return;
+            // }
 
             // turn off movie info
             modalMovieTitle.textContent = ``;
@@ -383,7 +412,6 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
             modalAlbumReleaseDate.textContent = `Year Released: ${data.loved[i].intYearReleased}`;
             modalAlbumStyle.textContent = `Style: ${data.loved[i].strStyle}`;
             modalAlbumGenre.textContent = `Genre: ${data.loved[i].strGenre}`;
-            modalAlbumDescription.textContent = `Description: ${data.loved[i].strDescription}`;
             modalAlbumScore.textContent = `Score: ${data.loved[i].intScore}`;
 
         })
