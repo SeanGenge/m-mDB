@@ -70,7 +70,7 @@ body {
     transform: scale(1.05);
 }
 
-.movie-name, .song-name {
+.movie-name, .album-name {
     color: var(--white);
     text-align: center;
     font-weight: bold;
@@ -119,5 +119,53 @@ body {
 
 
 
+/* favourites page */
+.favourites-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 90px;
+}
 
+#movie-btn, #music-btn {
+    margin: 30px;
+    padding: 15px 20px;
+    background-color: #26a69a;
+    color: white;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+    font-family: var(--primary-font);
+}
 
+#movie-btn:hover, #music-btn:hover {
+    cursor: pointer;
+}
+
+.favourites-cards-section {
+    display: grid;
+    width: 95%;
+    margin: 20px auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
+    grid-gap: 16px;
+    justify-content: center;
+}
+
+.fav-page-movie-card, .fav-page-album-card {
+    margin: 20px;
+    margin-bottom: 100px;
+}
+
+.hide {
+    display: none;
+}
+
+#favourites-page-h4-text {
+    color: white;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 40px;
+}

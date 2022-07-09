@@ -18,13 +18,60 @@ const fetchPopularMovies = function() {
         
         data.results.forEach(function(element, i) {
             swiperWrapperMovies.insertAdjacentHTML('beforeend', 
-            `<!-- slide ${i+1} -->` + getMovieCardHTML(element, i, true)
+            `<!-- slide ${i+1} -->
+            <div class="swiper-slide movie-carousel-slide" id=${i} data-objectid="${element.id}">
+                <img class="star star-movie-carousel" src="./assets/images/star.png"/>
+                <p class="movie-name">${element.original_title}</p>
+                <img class="poster" src="https://image.tmdb.org/t/p/w500${element.poster_path}"/>
+                <p class="rating-circle ${Number(element.vote_average).toFixed(1) >= 7.5 ? "green" : Number(element.vote_average).toFixed(1) >= 5 ? "orange" : "red"}">${element.vote_average.toFixed(1)}</p>
+            </div>`
             )
         })
 
-        addFavOnLoad();
-        addStarEventListeners();
+
+
+        // add the 'fav' class to all the cards in the movie carousel that have their id stored in local storage
+        allCards = document.querySelectorAll('.swiper-slide');
+
+        let localStorageVariables = {...localStorage};
+
+        let arrayOfLocalStorageKeys = Object.keys(localStorageVariables);
+
+        allCards.forEach(function(card) {
+
+            if(arrayOfLocalStorageKeys.includes(card.dataset.objectid)) {
+                card.children[0].classList.add('fav');
+                card.children[0].src = "./assets/images/star-filled.png";
+            } 
+
+        })
+
+
+
+        // add event listener to all stars in movie carousel
+        starElements = document.querySelectorAll('.star-movie-carousel');
+
+        starElements.forEach(function(element) {
+            
+            element.addEventListener('click', function() {
+                element.classList.toggle('fav')
+                
+                let currentCard = element.closest('.swiper-slide');
+                
+                if(element.classList.contains('fav')) {
+                    window.localStorage.setItem(`${currentCard.dataset.objectid}`, `https://api.themoviedb.org/3/movie/${currentCard.dataset.objectid}?api_key=` + apiKey);
+                    element.src = "./assets/images/star-filled.png";
+                } else {
+                    window.localStorage.removeItem(`${currentCard.dataset.objectid}`);
+                    element.src = "./assets/images/star.png";
+                }
+                    
+            })
+
+        })
+
     })
+
 }
 
 fetchPopularMovies();
@@ -108,7 +155,7 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
         swiperWrapperSongs.insertAdjacentHTML('beforeend', 
             `<div class="swiper-slide swiper-slide-album" data-artist="${object.strArtist}" data-album="${object.strAlbum}">
                 <img class="star-song" src="./assets/images/star.png"/>
-                <p class="song-name">${object.strAlbum}</p>
+                <p class="album-name">${object.strAlbum}</p>
                 <img class="poster" src="${object.strAlbumThumb}"/>
                 <p class="rating-circle ${Number(object.intScore).toFixed(1) >= 7.5 ? "green" : Number(object.intScore).toFixed(1) >= 5 ? "orange" : "red"}">${Number(object.intScore).toFixed(1)}</p>
             </div>`

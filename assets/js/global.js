@@ -125,7 +125,7 @@ function addFavOnLoad() {
     let localStorageVariables = {...localStorage};
 
     let arrayOfLocalStorageKeys = Object.keys(localStorageVariables);
-    console.log(arrayOfLocalStorageKeys);
+    
     allCards.forEach(function(card) {
         var qParams = readQueryString();
         

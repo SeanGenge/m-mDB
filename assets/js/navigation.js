@@ -20,13 +20,15 @@ function getNavigationHTML() {
                                 </div>
                             </div>
                         </li>
-                        <li><a id="favourites" class="waves-effect waves-light btn custom-btn">Favourites</a></li>
+                        <li><a id="favourites" href="./favouritesPage.html" class="waves-effect waves-light btn custom-btn">Favourites</a></li>
+
                         <!-- Sidebar (Hamburger Icon) -->
                         <li><a href="#" data-target="side-navbar" class="sidenav-trigger show-on-large right"><i class="material-icons">menu</i></a></li>
                     </ul>
                 </div>
             </nav>
         </div>
+
         <ul id="search-select" class="dropdown-content">
             <li><a href="#!">` + movieSearchTxt + `</a></li>
             <li><a href="#!">` + musicSearchTxt + `</a></li>
