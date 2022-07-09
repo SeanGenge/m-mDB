@@ -1,4 +1,8 @@
 
+// create a global variable for the data about the movies in the carousel. This way, it can be accessed in other js files (don't need to do another fetch request)
+let movieDataFromFetch;
+
+
 
 // most popular movies section
 
@@ -15,13 +19,16 @@ const fetchPopularMovies = function() {
     .then(responce => responce.json())
     .then(data => {
         console.log(data)
+
+        movieDataFromFetch = data.results;
         
         data.results.forEach(function(element, i) {
             swiperWrapperMovies.insertAdjacentHTML('beforeend', 
             `<!-- slide ${i+1} -->
-            <div class="swiper-slide movie-carousel-slide" id=${i} data-objectid="${element.id}">
+            <div data-target="modal1" class="modal-trigger swiper-slide movie-carousel-slide" id=${i} data-objectid="${element.id}">
                 <img class="star star-movie-carousel" src="./assets/images/star.png"/>
                 <p class="movie-name">${element.original_title}</p>
+
                 <img class="poster" src="https://image.tmdb.org/t/p/w500${element.poster_path}"/>
                 <p class="rating-circle ${Number(element.vote_average).toFixed(1) >= 7.5 ? "green" : Number(element.vote_average).toFixed(1) >= 5 ? "orange" : "red"}">${element.vote_average.toFixed(1)}</p>
             </div>`
@@ -69,6 +76,43 @@ const fetchPopularMovies = function() {
             })
 
         })
+
+
+        // add event listener to each card (outsource this completely to another file when you're done)
+        $('document').ready(function() {
+            $('.modal').modal()
+        })
+
+        let modalPoster = document.querySelector('.modal-poster');
+        let modalTitle = document.querySelector('.modal-movie-title');
+        let modalRating = document.querySelector('.modal-movie-rating');
+        let modalReleaseDate = document.querySelector('.modal-release-date');
+        let modalDescription = document.querySelector('.modal-description');
+
+
+
+        allCards.forEach(function(card, i) {
+            card.addEventListener('click', function(e) {
+                console.log(data.results[i]);
+
+                modalPoster.src = `https://image.tmdb.org/t/p/w500${data.results[i].poster_path}`
+
+                modalTitle.textContent = `${data.results[i].original_title}`
+
+                modalRating.textContent = `${data.results[i].vote_average}`
+
+                modalReleaseDate.textContent = `${data.results[i].release_date}`
+
+                modalDescription.textContent = `${data.results[i].overview}`
+
+            })
+        })
+
+
+
+
+
+
 
     })
 
