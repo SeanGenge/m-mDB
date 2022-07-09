@@ -10,18 +10,18 @@ let favPageAlbumCards;
 
 // extract local storage variables
 let localStorageVariables = {...localStorage};
-console.log(localStorageVariables);
 
 let localStorageValues = Object.values(localStorageVariables);
-console.log(localStorageValues);
 
 
 
 // when the page first loads up, load all the favourite movies, just hide them and only unhide them when you press the relevant button
 let movieLocalVariables = [];
 
+// loop over local storage variables
 localStorageValues.forEach(function(urlString) {
 
+    // if local storage value includes 'https://api.themoviedb.org', push it into movieLocalVariables array
     if(urlString.includes('https://api.themoviedb.org')) {
         movieLocalVariables.push(urlString);
     }
@@ -39,6 +39,7 @@ movieLocalVariables.forEach(function(urlString, i) {
     .then(data => {
         console.log(data)
 
+        // create HTML element for each movie card
         favoritesCardsSection.insertAdjacentHTML('beforeend', `
             <div class="swiper-slide fav-page-movie-card hide" data-objectid="${data.id}">
                 <img class="star fav star-movie-number-${i}" src="./assets/images/star-filled.png"/>
@@ -48,6 +49,7 @@ movieLocalVariables.forEach(function(urlString, i) {
             </div>
         `)
 
+        // define node list of all movie cards on this page
         favPageMovieCards = document.querySelectorAll('.fav-page-movie-card')
 
 
@@ -56,22 +58,31 @@ movieLocalVariables.forEach(function(urlString, i) {
         let starElementForCurrentIteration = document.querySelector(`.star-movie-number-${i}`);
 
         starElementForCurrentIteration.addEventListener('click', function() {
-
+            
+            // define variable for the current iteration's star element's movie card element
             let currentCard = starElementForCurrentIteration.closest('.fav-page-movie-card');
 
             if(starElementForCurrentIteration.classList.contains('fav')) {
+                // if star element contains 'fav' class, do the following
 
+                // remove 'fav' class
                 starElementForCurrentIteration.classList.remove('fav');
 
+                // change star to be outline of yellow only
                 starElementForCurrentIteration.src = "./assets/images/star.png"
 
+                // remove the relevant item from local storage
                 window.localStorage.removeItem(`${currentCard.dataset.objectid}`)
             } else {
+                // if star element doesn't contain 'fav' class, do the following
 
+                // add 'fav' class
                 starElementForCurrentIteration.classList.add('fav')
 
+                // change star to be filled with yellow
                 starElementForCurrentIteration.src = "./assets/images/star-filled.png"
 
+                // add the relevant item to local storage
                 window.localStorage.setItem(`${currentCard.dataset.objectid}`, `https://api.themoviedb.org/3/movie/${currentCard.dataset.objectid}?api_key=128647a13ca5ba337586e1fc48e4cbf6`)
             }
 
@@ -88,8 +99,10 @@ movieLocalVariables.forEach(function(urlString, i) {
 // when the page first loads up, load all the favourite albums, just hide them and only unhide them when you press the relevant button
 let musicLocalVariables = [];
 
+// loop over local storage variables
 localStorageValues.forEach(function(urlString) {
 
+    // if local storage value includes 'https://www.theaudiodb.com', push it into musicLocalVariables array
     if(urlString.includes('https://www.theaudiodb.com')) {
         musicLocalVariables.push(urlString);
     }
@@ -107,6 +120,7 @@ musicLocalVariables.forEach(function(urlString, i) {
     .then(data => {
         console.log(data)
 
+        // create HTML element for each album card
         favoritesCardsSection.insertAdjacentHTML('beforeend', `
             <div class="swiper-slide fav-page-album-card hide" data-artist="${data.album[0].strArtist}" data-album="${data.album[0].strAlbum}">
                 <img class="star fav star-album-number-${i}" src="./assets/images/star-filled.png"/>
@@ -117,6 +131,7 @@ musicLocalVariables.forEach(function(urlString, i) {
             `
         )
 
+        // define node list of all album cards on this page
         favPageAlbumCards = document.querySelectorAll('.fav-page-album-card');
 
 
@@ -142,21 +157,30 @@ musicLocalVariables.forEach(function(urlString, i) {
 
         starElementForCurrentIteration.addEventListener('click', function() {
 
+            // define variable for the current iteration's star element's album card element
             let currentCard = starElementForCurrentIteration.closest('.fav-page-album-card');
 
             if(starElementForCurrentIteration.classList.contains('fav')) {
+                // if star element contains 'fav' class, do the following
 
+                // remove 'fav' class
                 starElementForCurrentIteration.classList.remove('fav');
-                    
+                
+                // change star to be outline of yellow only
                 starElementForCurrentIteration.src = "./assets/images/star.png"
-                    
+                
+                // remove the relevant item from local storage
                 window.localStorage.removeItem(`9album9-${artistName}-${albumName}`)
             } else {
-                
+                // if star element doesn't contain 'fav' class, do the following
+
+                // add 'fav' class
                 starElementForCurrentIteration.classList.add('fav')
                 
+                // change star to be filled with yellow
                 starElementForCurrentIteration.src = "./assets/images/star-filled.png"
                 
+                // add the relevant item to local storage
                 window.localStorage.setItem(`9album9-${artistName}-${albumName}`, `https://www.theaudiodb.com/api/v1/json/523532/searchalbum.php?s=${artistName}&a=${albumName}`)
             }
                 
@@ -176,17 +200,17 @@ favBtnArea.addEventListener('click', function(e) {
     // if click event occured at movie btn
     if(e.target === movieFavBtn) {
         
+        // hide all the movie cards
         favPageMovieCards.forEach(function(element) {
             element.classList.toggle('hide');
         })   
 
     }
 
-
-
     // if click event occured at music btn
     if(e.target === musicFavBtn) {
         
+        // hide all the album cards
         favPageAlbumCards.forEach(function(element) {
             element.classList.toggle('hide');
         })
