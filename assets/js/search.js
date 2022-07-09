@@ -12,7 +12,7 @@ function search(event) {
 
 function searchMovie(movie, page) {
     // Searches a particular movie using themoviedb api
-    fetch("https://api.themoviedb.org/3/search/movie?query=" + movie + "&api_key=" + apiKey + "&page=" + page + "&include_adult=false")
+    fetch("https://api.themoviedb.org/3/search/movie?query=" + movie + "&api_key=" + apiKey + "&page=" + page + "&include_adult=false&language=en-US")
     .then(function(response) {
         return response.json();
     })
@@ -53,6 +53,57 @@ function searchMusic(music) {
             title.innerHTML = "Sorry, no albums were found";
         }
     });
+}
+
+function searchMovieGenre(genre, genreName) {
+    // Searches movies based on genres
+    fetch(`https://api.themoviedb.org/3/movie/popular?&language=en-US&with_genres=${genre}&api_key=${apiKey}`)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        var title = document.getElementById("search-title");
+        title.innerHTML = genreName;
+        
+        displaySearchedMovies(data);
+    });
+}
+
+function searchMovieDates(date, dateName) {
+    // Searches movies based on date
+    var release_date = "primary_release_year=" + date;
+    // Split up the dates since there may be two
+    var dates = date.split("!");
+    
+    if (dates.length == 2) {
+        release_date = "primary_release_date.lte=" + dates[0] + "&primary_release_date.gte=" + dates[1];
+    }
+    
+    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc&language=en-US&include_adult=false&page=1&${release_date}`)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        var title = document.getElementById("search-title");
+        dateName = dateName.replace("%27", "'");
+        title.innerHTML = dateName;
+        
+        displaySearchedMovies(data);
+    });
+}
+
+function searchByMovieDates(event) {
+    // Goes to the search page to search for a particular date range
+    if (event.target.matches("a")) {
+        window.location.href = searchURL + "?date=" + event.target.id + "_" + event.target.text + "&term=" + movieSearchTxt;
+    }
+}
+
+function searchByMovieGenre(event) {
+    // Goes to the search page to search for a particular genre
+    if (event.target.matches("a")) {
+        window.location.href = searchURL + "?genre=" + event.target.id + "_" + event.target.text + "&term=" + movieSearchTxt;
+    }
 }
 
 function displaySearchedMovies(movies) {
@@ -114,7 +165,20 @@ if (window.location.pathname.includes(searchURL)) {
     
     // If it was a movie, search by movie. If not search by music artists
     if (searchBy[1] === movieSearchTxt) {
-        searchMovie(searchStr[1], 1);
+        // If there is genre then search by genre. If not search by movie
+        if (searchStr[0] === "genre") {
+            var genre = searchStr[1].split("_");
+            
+            searchMovieGenre(genre[0], genre[1]);
+        }
+        else if (searchStr[0] === "date") {
+            var date = searchStr[1].split("_");
+            
+            searchMovieDates(date[0], date[1]);
+        }
+        else {
+            searchMovie(searchStr[1], 1);
+        }
     }
     else if (searchBy[1] === musicSearchTxt) {
         searchMusic(searchStr[1]);
