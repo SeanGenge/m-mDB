@@ -40,12 +40,15 @@ const fetchPopularMovies = function() {
         
         data.results.forEach(function(element, i) {
             swiperWrapperMovies.insertAdjacentHTML('beforeend', 
-            `<div data-target="modal1" class="modal-trigger swiper-slide movie-carousel-slide" id=${i} data-objectid="${element.id}">
+            `<div class="swiper-slide movie-carousel-slide" id=${i} data-objectid="${element.id}">
                 <img class="star star-movie-carousel" src="./assets/images/star.png"/>
-                <p class="movie-name">${element.original_title}</p>
 
-                <img class="poster" src="https://image.tmdb.org/t/p/w500${element.poster_path}"/>
-                <p class="rating-circle ${Number(element.vote_average).toFixed(1) >= 7.5 ? "green" : Number(element.vote_average).toFixed(1) >= 5 ? "orange" : "red"}">${element.vote_average.toFixed(1)}</p>
+                <div data-target="modal1" class="modal-trigger">
+                    <p class="movie-name">${element.original_title}</p>
+                    
+                    <img class="poster" src="https://image.tmdb.org/t/p/w500${element.poster_path}"/>
+                    <p class="rating-circle ${Number(element.vote_average).toFixed(1) >= 7.5 ? "green" : Number(element.vote_average).toFixed(1) >= 5 ? "orange" : "red"}">${element.vote_average.toFixed(1)}</p>
+                </div>
             </div>`
             )
         })
@@ -97,23 +100,6 @@ const fetchPopularMovies = function() {
         $('document').ready(function() {
             $('.modal').modal()
         })
-
-        // // variable for movie and album image
-        // let modalPoster = document.querySelector('.modal-poster');
-
-        // // variables for movies
-        // let modalMovieTitle = document.querySelector('.modal-movie-title');
-        // let modalMovieRating = document.querySelector('.modal-movie-rating');
-        // let modalMovieReleaseDate = document.querySelector('.modal-release-date');
-        // let modalMovieDescription = document.querySelector('.modal-description');
-
-        // // variables for albums
-        // let modalAlbumTitle = document.querySelector('.modal-album-title')
-        // let modalAlbumArtist = document.querySelector('.modal-album-artist');
-        // let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
-        // let modalAlbumStyle = document.querySelector('.modal-album-style');
-        // let modalAlbumGenre = document.querySelector('.modal-album-genre')
-        // let modalAlbumScore = document.querySelector('.modal-album-score');
 
 
 
@@ -234,11 +220,14 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
     popularAlbumsArray20.forEach(function(object, i) {
 
         swiperWrapperSongs.insertAdjacentHTML('beforeend', 
-            `<div data-target="modal1" class="modal-trigger swiper-slide swiper-slide-album" data-artist="${object.strArtist}" data-album="${object.strAlbum}">
+            `<div class="swiper-slide swiper-slide-album" data-artist="${object.strArtist}" data-album="${object.strAlbum}">
                 <img class="star-song" src="./assets/images/star.png"/>
-                <p class="album-name">${object.strAlbum}</p>
-                <img class="poster" src="${object.strAlbumThumb}"/>
-                <p class="rating-circle ${Number(object.intScore).toFixed(1) >= 7.5 ? "green" : Number(object.intScore).toFixed(1) >= 5 ? "orange" : "red"}">${Number(object.intScore).toFixed(1)}</p>
+
+                <div data-target="modal1" class="modal-trigger">
+                    <p class="album-name">${object.strAlbum}</p>
+                    <img class="poster" src="${object.strAlbumThumb}"/>
+                    <p class="rating-circle ${Number(object.intScore).toFixed(1) >= 7.5 ? "green" : Number(object.intScore).toFixed(1) >= 5 ? "orange" : "red"}">${Number(object.intScore).toFixed(1)}</p>
+                </div>
             </div>`
         )
 
@@ -358,25 +347,6 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
     $('document').ready(function() {
         $('.modal').modal()
     })
-
-
-
-    // // variable for movie and album image
-    // let modalPoster = document.querySelector('.modal-poster');
-
-    // // variables for movies
-    // let modalMovieTitle = document.querySelector('.modal-movie-title');
-    // let modalMovieRating = document.querySelector('.modal-movie-rating');
-    // let modalMovieReleaseDate = document.querySelector('.modal-release-date');
-    // let modalMovieDescription = document.querySelector('.modal-description');
-
-    // // variables for albums
-    // let modalAlbumTitle = document.querySelector('.modal-album-title')
-    // let modalAlbumArtist = document.querySelector('.modal-album-artist');
-    // let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
-    // let modalAlbumStyle = document.querySelector('.modal-album-style');
-    // let modalAlbumGenre = document.querySelector('.modal-album-genre')
-    // let modalAlbumScore = document.querySelector('.modal-album-score');
     
 
 
@@ -385,16 +355,7 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
         card.addEventListener('click', function(e) {
             console.log(data.loved[i])
 
-            // console.log(e.target);
-
-            // // if the star was clicked, don't open the modal
-            // if(e.target.classList.contains('star-song')) {
-            //     console.log('indeed')
-
-            //     $('#modal1').modal('close');
-
-            //     return;
-            // }
+            console.log(e.target);
 
             // turn off movie info
             modalMovieTitle.textContent = ``;
@@ -413,7 +374,6 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
             modalAlbumStyle.textContent = `Style: ${data.loved[i].strStyle}`;
             modalAlbumGenre.textContent = `Genre: ${data.loved[i].strGenre}`;
             modalAlbumScore.textContent = `Score: ${data.loved[i].intScore}`;
-
         })
     })
 
