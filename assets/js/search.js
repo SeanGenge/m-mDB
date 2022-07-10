@@ -134,7 +134,7 @@ function displaySearchedMovies(movies) {
         
         // Since the movieCard is in HTML, make a wrapper div that will help resize the movies
         var movieCardWrapper = document.createElement("div");
-        movieCardWrapper.className = "search-card";
+        movieCardWrapper.className = "search-card movie-card";
         
         var movieCard = getMovieCardHTML(currMovie, i, false);
         
