@@ -19,6 +19,15 @@ There is also a search bar on the navigation. A user can choose to search by mov
 
 
 
+## Features
+ - Displays most popular Movies and Music albums on the home page
+ - Search Movies and Music albums using the search bar
+ - Search movies by genre and dates released
+ - Displays movie and Music album ratings
+ - Save and view favourite Movies and Music Albums using localStorage
+
+
+
 ## Screenshots of Application
 
 ## Home Page -  Navigation Bar and Movie Carousel

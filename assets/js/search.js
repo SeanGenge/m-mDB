@@ -1,6 +1,23 @@
 var searchBar = document.getElementById("search");
 var searchURL = "search.html";
 
+// modal variables
+var modalPoster = document.querySelector('.modal-poster');
+
+// modal variables for movies
+var modalMovieTitle = document.querySelector('.modal-movie-title');
+var modalMovieRating = document.querySelector('.modal-movie-rating');
+var modalMovieReleaseDate = document.querySelector('.modal-release-date');
+var modalMovieDescription = document.querySelector('.modal-description');
+
+// modal variables for albums
+var modalAlbumTitle = document.querySelector('.modal-album-title');
+var modalAlbumArtist = document.querySelector('.modal-album-artist');
+var modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
+var modalAlbumStyle = document.querySelector('.modal-album-style');
+var modalAlbumGenre = document.querySelector('.modal-album-genre');
+var modalAlbumScore = document.querySelector('.modal-album-score');
+
 function search(event) {
     event.preventDefault();
     // Only search if the enter key is pressed
@@ -117,13 +134,15 @@ function displaySearchedMovies(movies) {
         
         // Since the movieCard is in HTML, make a wrapper div that will help resize the movies
         var movieCardWrapper = document.createElement("div");
-        movieCardWrapper.className = "search-card";
+        movieCardWrapper.className = "search-card movie-card";
         
         var movieCard = getMovieCardHTML(currMovie, i, false);
         
         movieCardWrapper.innerHTML += movieCard;
         
         movieGridList.appendChild(movieCardWrapper);
+        
+        dynamicallyRenderModal(movieCardWrapper, currMovie, true);
     }
     
     addFavOnLoad();
@@ -149,6 +168,8 @@ function displaySearchedMusic(music) {
         musicCardWrapper.innerHTML += musicCard;
         
         musicGridList.appendChild(musicCardWrapper);
+        
+        dynamicallyRenderModal(musicCardWrapper, currMusic, false);
     }
     
     addFavOnLoad();
@@ -184,3 +205,7 @@ if (window.location.pathname.includes(searchURL)) {
         searchMusic(searchStr[1]);
     }
 }
+
+$('document').ready(function() {
+    $('.modal').modal()
+})
