@@ -51,7 +51,7 @@ const dynamicallyRenderModal = function(currentCard, objectFromAPI, trueForMovie
             modalAlbumReleaseDate.textContent = `Year Released: ${objectFromAPI.intYearReleased}`;
             modalAlbumStyle.textContent = `Style: ${objectFromAPI.strStyle}`;
             modalAlbumGenre.textContent = `Genre: ${objectFromAPI.strGenre}`;
-            modalAlbumScore.textContent = `Score: ${objectFromAPI.intScore}`;
+            modalAlbumScore.textContent = `Score: ${objectFromAPI.intScore === null ? 0 : objectFromAPI.intScore}`;
 
             // change poster src so that it's for the currentCard's album
             modalPoster.src = `${objectFromAPI.strAlbumThumb}`;
