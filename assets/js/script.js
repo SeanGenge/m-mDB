@@ -4,28 +4,28 @@
 // creating necessary variables
 const swiperWrapperMovies = document.querySelector('#swiper-wrapper-movies');
 const swiperWrapperSongs = document.querySelector('#swiper-wrapper-songs');
-let allCards;
-let starElements;
-let favouritesArrayURLS = [];
+var allCards;
+var starElements;
+var favouritesArrayURLS = [];
 
 
 
 // modal variables
-let modalPoster = document.querySelector('.modal-poster');
+var modalPoster = document.querySelector('.modal-poster');
 
 // modal variables for movies
-let modalMovieTitle = document.querySelector('.modal-movie-title');
-let modalMovieRating = document.querySelector('.modal-movie-rating');
-let modalMovieReleaseDate = document.querySelector('.modal-release-date');
-let modalMovieDescription = document.querySelector('.modal-description');
+var modalMovieTitle = document.querySelector('.modal-movie-title');
+var modalMovieRating = document.querySelector('.modal-movie-rating');
+var modalMovieReleaseDate = document.querySelector('.modal-release-date');
+var modalMovieDescription = document.querySelector('.modal-description');
 
 // modal variables for albums
-let modalAlbumTitle = document.querySelector('.modal-album-title');
-let modalAlbumArtist = document.querySelector('.modal-album-artist');
-let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
-let modalAlbumStyle = document.querySelector('.modal-album-style');
-let modalAlbumGenre = document.querySelector('.modal-album-genre');
-let modalAlbumScore = document.querySelector('.modal-album-score');
+var modalAlbumTitle = document.querySelector('.modal-album-title');
+var modalAlbumArtist = document.querySelector('.modal-album-artist');
+var modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
+var modalAlbumStyle = document.querySelector('.modal-album-style');
+var modalAlbumGenre = document.querySelector('.modal-album-genre');
+var modalAlbumScore = document.querySelector('.modal-album-score');
 
 
 
