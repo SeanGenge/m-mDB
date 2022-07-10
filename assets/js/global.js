@@ -180,8 +180,3 @@ function readQueryString() {
     
     return params;
 }
-
-function changeRatingColour(card) {
-    // Changes the rating colour on the cards
-    
-}

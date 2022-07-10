@@ -1,6 +1,23 @@
 var searchBar = document.getElementById("search");
 var searchURL = "search.html";
 
+// modal variables
+let modalPoster = document.querySelector('.modal-poster');
+
+// modal variables for movies
+let modalMovieTitle = document.querySelector('.modal-movie-title');
+let modalMovieRating = document.querySelector('.modal-movie-rating');
+let modalMovieReleaseDate = document.querySelector('.modal-release-date');
+let modalMovieDescription = document.querySelector('.modal-description');
+
+// modal variables for albums
+let modalAlbumTitle = document.querySelector('.modal-album-title');
+let modalAlbumArtist = document.querySelector('.modal-album-artist');
+let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
+let modalAlbumStyle = document.querySelector('.modal-album-style');
+let modalAlbumGenre = document.querySelector('.modal-album-genre');
+let modalAlbumScore = document.querySelector('.modal-album-score');
+
 function search(event) {
     event.preventDefault();
     // Only search if the enter key is pressed
@@ -124,6 +141,8 @@ function displaySearchedMovies(movies) {
         movieCardWrapper.innerHTML += movieCard;
         
         movieGridList.appendChild(movieCardWrapper);
+        
+        dynamicallyRenderModal(movieCardWrapper, currMovie, true);
     }
     
     addFavOnLoad();
@@ -149,6 +168,8 @@ function displaySearchedMusic(music) {
         musicCardWrapper.innerHTML += musicCard;
         
         musicGridList.appendChild(musicCardWrapper);
+        
+        dynamicallyRenderModal(musicCardWrapper, currMusic, false);
     }
     
     addFavOnLoad();
@@ -184,3 +205,7 @@ if (window.location.pathname.includes(searchURL)) {
         searchMusic(searchStr[1]);
     }
 }
+
+$('document').ready(function() {
+    $('.modal').modal()
+})
