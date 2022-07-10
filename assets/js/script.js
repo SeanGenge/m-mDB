@@ -1,5 +1,4 @@
 
-
 // most popular movies section
 
 // creating necessary variables
@@ -9,6 +8,29 @@ let allCards;
 let starElements;
 let favouritesArrayURLS = [];
 
+
+
+// modal variables
+let modalPoster = document.querySelector('.modal-poster');
+
+// modal variables for movies
+let modalMovieTitle = document.querySelector('.modal-movie-title');
+let modalMovieRating = document.querySelector('.modal-movie-rating');
+let modalMovieReleaseDate = document.querySelector('.modal-release-date');
+let modalMovieDescription = document.querySelector('.modal-description');
+
+// modal variables for albums
+let modalAlbumTitle = document.querySelector('.modal-album-title');
+let modalAlbumArtist = document.querySelector('.modal-album-artist');
+let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
+let modalAlbumStyle = document.querySelector('.modal-album-style');
+let modalAlbumGenre = document.querySelector('.modal-album-genre');
+let modalAlbumScore = document.querySelector('.modal-album-score');
+
+
+
+
+
 // creating a function for fetching the "popular" category of movie data
 const fetchPopularMovies = function() {
     fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=` + apiKey)
@@ -16,14 +38,19 @@ const fetchPopularMovies = function() {
     .then(data => {
         console.log(data)
         
+        // create slide for each movie retrieved from API call
         data.results.forEach(function(element, i) {
             swiperWrapperMovies.insertAdjacentHTML('beforeend', 
-            `<!-- slide ${i+1} -->
-            <div class="swiper-slide movie-carousel-slide" id=${i} data-objectid="${element.id}">
+            `<div class="swiper-slide movie-carousel-slide" id=${i} data-objectid="${element.id}">
                 <img class="star star-movie-carousel" src="./assets/images/star.png"/>
-                <p class="movie-name">${element.original_title}</p>
-                <img class="poster" src="https://image.tmdb.org/t/p/w500${element.poster_path}"/>
-                <p class="rating-circle ${Number(element.vote_average).toFixed(1) >= 7.5 ? "green" : Number(element.vote_average).toFixed(1) >= 5 ? "orange" : "red"}">${element.vote_average.toFixed(1)}</p>
+
+                <div data-target="modal1" class="modal-trigger">
+                    <p class="movie-name">${element.original_title}</p>
+                    
+                    <img class="poster" src="https://image.tmdb.org/t/p/w500${element.poster_path}"/>
+
+                    <p class="rating-circle ${Number(element.vote_average).toFixed(1) >= 7.5 ? "green" : Number(element.vote_average).toFixed(1) >= 5 ? "orange" : "red"}">${element.vote_average.toFixed(1)}</p>
+                </div>
             </div>`
             )
         })
@@ -31,7 +58,7 @@ const fetchPopularMovies = function() {
 
 
         // add the 'fav' class to all the cards in the movie carousel that have their id stored in local storage
-        allCards = document.querySelectorAll('.swiper-slide');
+        allCards = document.querySelectorAll('.movie-carousel-slide');
 
         let localStorageVariables = {...localStorage};
 
@@ -70,11 +97,28 @@ const fetchPopularMovies = function() {
 
         })
 
+
+
+        // add modal functionality to each card
+        $('document').ready(function() {
+            $('.modal').modal()
+        })
+
+        // loop through all cards
+        allCards.forEach(function(card, i) {
+            
+            // render modal for each card
+            dynamicallyRenderModal(card, data.results[i], true)  
+
+        })
+
     })
 
 }
 
 fetchPopularMovies();
+
+
 
 // slider options for Popular movies carousel
 let movieSwiper = new Swiper(".mySwiper", {
@@ -126,12 +170,16 @@ let movieSwiper = new Swiper(".mySwiper", {
 
 
 
+
+
 // most popular songs section
 
 // creating necessary variables
 let popularAlbumsArray20 = [];
 let starSongElements;
 let allAlbumCards;
+
+
 
 // fetching album data from audioDB
 fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
@@ -155,9 +203,12 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
         swiperWrapperSongs.insertAdjacentHTML('beforeend', 
             `<div class="swiper-slide swiper-slide-album" data-artist="${object.strArtist}" data-album="${object.strAlbum}">
                 <img class="star-song" src="./assets/images/star.png"/>
-                <p class="album-name">${object.strAlbum}</p>
-                <img class="poster" src="${object.strAlbumThumb}"/>
-                <p class="rating-circle ${Number(object.intScore).toFixed(1) >= 7.5 ? "green" : Number(object.intScore).toFixed(1) >= 5 ? "orange" : "red"}">${Number(object.intScore).toFixed(1)}</p>
+
+                <div data-target="modal1" class="modal-trigger">
+                    <p class="album-name">${object.strAlbum}</p>
+                    <img class="poster" src="${object.strAlbumThumb}"/>
+                    <p class="rating-circle ${Number(object.intScore).toFixed(1) >= 7.5 ? "green" : Number(object.intScore).toFixed(1) >= 5 ? "orange" : "red"}">${Number(object.intScore).toFixed(1)}</p>
+                </div>
             </div>`
         )
 
@@ -186,6 +237,7 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
         }
 
     })
+
 
 
     let artistNameString;
@@ -272,7 +324,24 @@ fetch('https://theaudiodb.com/api/v1/json/523532/mostloved.php?format=album')
 
     })
 
+
+
+    // add modal functionality to all cards
+    $('document').ready(function() {
+        $('.modal').modal()
+    })
+    
+    // loop through all cards
+    allAlbumCards.forEach(function(card, i) {
+
+        // render modal for each card
+        dynamicallyRenderModal(card, data.loved[i], false)
+
+    })
+
 })
+
+
 
 // slider options for popular songs
 let songSwiper = new Swiper(".mySwiper2", {

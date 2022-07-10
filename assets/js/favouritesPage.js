@@ -8,6 +8,28 @@ let favPageAlbumCards;
 
 
 
+// modal variables
+let modalPoster = document.querySelector('.modal-poster');
+
+// modal variables for movies
+let modalMovieTitle = document.querySelector('.modal-movie-title');
+let modalMovieRating = document.querySelector('.modal-movie-rating');
+let modalMovieReleaseDate = document.querySelector('.modal-release-date');
+let modalMovieDescription = document.querySelector('.modal-description');
+
+// modal variables for albums
+let modalAlbumTitle = document.querySelector('.modal-album-title');
+let modalAlbumArtist = document.querySelector('.modal-album-artist');
+let modalAlbumReleaseDate = document.querySelector('.modal-album-release-date');
+let modalAlbumStyle = document.querySelector('.modal-album-style');
+let modalAlbumGenre = document.querySelector('.modal-album-genre');
+let modalAlbumScore = document.querySelector('.modal-album-score');
+
+
+
+
+
+
 // extract local storage variables
 let localStorageVariables = {...localStorage};
 
@@ -41,11 +63,16 @@ movieLocalVariables.forEach(function(urlString, i) {
 
         // create HTML element for each movie card
         favoritesCardsSection.insertAdjacentHTML('beforeend', `
-            <div class="swiper-slide fav-page-movie-card hide" data-objectid="${data.id}">
+            <div class="swiper-slide fav-page-movie-card hide " data-objectid="${data.id}">
                 <img class="star fav star-movie-number-${i}" src="./assets/images/star-filled.png"/>
-                <p class="movie-name">${data.original_title}</p>
-                <img class="poster" src="https://image.tmdb.org/t/p/w500${data.poster_path}"/>
-                <p class="rating-circle ${Number(data.vote_average).toFixed(1) >= 7.5 ? "green" : Number(data.vote_average).toFixed(1) >= 5 ? "orange" : "red"}">${data.vote_average.toFixed(1)}</p>
+
+                <div data-target="modal1" class="modal-trigger movie-card-${i}">
+                    <p class="movie-name">${data.original_title}</p>
+
+                    <img class="poster" src="https://image.tmdb.org/t/p/w500${data.poster_path}"/>
+
+                    <p class="rating-circle ${Number(data.vote_average).toFixed(1) >= 7.5 ? "green" : Number(data.vote_average).toFixed(1) >= 5 ? "orange" : "red"}">${data.vote_average.toFixed(1)}</p>
+                </div>
             </div>
         `)
 
@@ -88,6 +115,19 @@ movieLocalVariables.forEach(function(urlString, i) {
 
         })
 
+
+
+        // adding modal functionality (outsourced to modal.js)
+        $('document').ready(function() {
+            $('.modal').modal()
+        })
+
+        // select current iteration's movie card
+        const currentIterationMovieCard = document.querySelector(`.movie-card-${i}`)
+
+        // render modal
+        dynamicallyRenderModal(currentIterationMovieCard, data, true)
+
     })
 
 })
@@ -124,11 +164,16 @@ musicLocalVariables.forEach(function(urlString, i) {
         favoritesCardsSection.insertAdjacentHTML('beforeend', `
             <div class="swiper-slide fav-page-album-card hide" data-artist="${data.album[0].strArtist}" data-album="${data.album[0].strAlbum}">
                 <img class="star fav star-album-number-${i}" src="./assets/images/star-filled.png"/>
-                <p class="album-name">${data.album[0].strAlbum}</p>
-                <img class="poster" src="${data.album[0].strAlbumThumb}"/>
-                <p class="rating-circle ${Number(data.album[0].intScore).toFixed(1) >= 7.5 ? "green" : Number(data.album[0].intScore).toFixed(1) >= 5 ? "orange" : "red"}">${Number(data.album[0].intScore).toFixed(1)}</p>
+
+
+                <div data-target="modal1" class="modal-trigger album-card-${i}">
+                    <p class="album-name">${data.album[0].strAlbum}</p>
+                    <img class="poster" src="${data.album[0].strAlbumThumb}"/>
+                    <p class="rating-circle ${Number(data.album[0].intScore).toFixed(1) >= 7.5 ? "green" : Number(data.album[0].intScore).toFixed(1) >= 5 ? "orange" : "red"}">${Number(data.album[0].intScore).toFixed(1)}</p>
+                </div>
+                
             </div>
-            `
+        `
         )
 
         // define node list of all album cards on this page
@@ -185,6 +230,19 @@ musicLocalVariables.forEach(function(urlString, i) {
             }
                 
         })
+
+
+
+        // adding modal functionality (outsourced to modal.js)
+        $('document').ready(function() {
+            $('.modal').modal()
+        })
+
+        // select current iteration's album card
+        const currentIterationAlbumCard = document.querySelector(`.album-card-${i}`)
+
+        // render modal
+        dynamicallyRenderModal(currentIterationAlbumCard, data.album[0], false)
 
     })
 
