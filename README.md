@@ -1,6 +1,7 @@
 # m&m DB (Movies and Music Database)
 
-
+## Link to deployed application
+Deployed app: https://seangenge.github.io/m-mDB/
 
 ## Description
 This website allows user to find out more information about movies and song albums.
@@ -50,7 +51,4 @@ There is also a search bar on the navigation. A user can choose to search by mov
 ![](./assets/images/screenshot-9.png)
 
 
-
-## Link to deployed application
-Deployed app: https://seangenge.github.io/m-mDB/
 
