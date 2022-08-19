@@ -18,7 +18,11 @@ On the navigation bar, there is a hamburger icon on the right side, when this is
 
 There is also a search bar on the navigation. A user can choose to search by movie name or by artist name. Once the user has typed into the search bar and pressed the 'enter' key, a number of movies or albums will be displayed based off the search input.
 
-
+## Tools/Languages used
+ - HTML
+ - JavaScript (Little bit of Jquery)
+ - MateralizeCSS
+ - SwiperJs
 
 ## Features
  - Displays most popular Movies and Music albums on the home page
