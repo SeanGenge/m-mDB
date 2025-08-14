@@ -1,4 +1,4 @@
-const apiKey = "128647a13ca5ba337586e1fc48e4cbf6";
+const apiKey = "148d2b9663d4080b4a8900b36e9f8b4e";
 const musicApiKey = "523532";
 
 function getMovieCardHTML(movieDetails, index, inCarousel) {
